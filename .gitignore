@@ -2,4 +2,4 @@
 *.jl.*.cov
 *.jl.mem
 deps/deps.jl
-indexfund/.ipynb_checkpoints/
+.ipynb_checkpoints/
