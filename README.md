@@ -1,27 +1,83 @@
 # pydataberlin2017
 Slides and code for PyData Berlin 2017, Introduction to Julia, tutorial.
 
+Please go through the installation instructions below prior to attending the
+workshop. They have been tested on Mac OS X and Debian Stretch.
 
-This will be an interactive workshop using jupyter notebooks. Please bring your laptop, with the following minimum software installed:
-- Julia (version 0.5.2 or greater)
-- Jupyter notebook
+The actual material will be published just before the event.
 
-It will further speed things enormously if you open Julia at least once on your machine and run from the Julia command prompt
-> Pkg.add("IJulia")
+## 1. Install Julia
 
-This will allow the interaction between Julia and Jupyter to function.
+For this workshop, we will use Julia v0.6 which was released on June 19th 2017.
+A pre-built binary version can be [downloaded](https://julialang.org/downloads/)
+for your operating system.
 
-If for some reason you fail to come with a working Julia installation, wifi permitting, it may be possible to follow along on https://www.juliabox.com/
+## 2. Install required packages
 
-## How to obtain Julia
+The workshop material depends on several packages from the Julia community.
+Please execute the following commands in the REPL to download and install them:
 
-You can download binaries from https://julialang.org/downloads/ Current options include Windows, MacOS and Linux.
+```julia
+Pkg.add("IJulia")
+Pkg.add("DataFrames")
+Pkg.add("Plots")
+Pkg.add("PyPlot")
+Pkg.add("StatPlots")
+Pkg.add("JuMP")
+Pkg.add("Cbc")
+Pkg.add("BenchmarkTools")
+Pkg.add("ProfileView")
+```
 
-In addition, most Linux distributions come with Julia packages in their repositories. However, these may lag somewhat behind the current rather fast development cycle.
+Please also attempt to install Gallium, but it may not be updated properly to version 0.6 yet:
 
-You can also try online via https://www.juliabox.com/ which provides hosted Julia notebooks on Google Cloud.
+```julia
+Pkg.add("Gallium")
+```
 
-If you need corporate support, https://juliacomputing.com/products/juliapro.html provides a batteries included installation of Julia. The company is run by some of the creators of the language and provides a single install with all of the most important add-ons.
+**OpenCL** will work out of the box for Mac users. For Windows and Linux users it typically requires some external packages be installed. This is not a workshop on OpenCL, so we'll provide a notebook with the calculated outputs which you can follow, but please note when installing OpenCL that you need a **driver** or a **library** which provides OpenCL support directly for your system and not just the header files. (apt-get install opencl typically only grabs the headers).
+
+If you want to install OpenCL there are a number of options:
+1. If you have an NVIDIA GPU then you automatically have OpenCL installed if you install CUDA development system. Note that the NVIDIA implementation can only compile OpenCL for the GPU device.
+2. You can install ATIs APP SDK, which is natively OpenCL, for ATI GPU devices. _This system can also compile for CPU giving you the best of both worlds!_
+3. Intel provide OpenCL compilers for CPUs.
+4. Apple pre-install OpenCL support on their computers, for both CPU and GPU.
+
+Following installation of the OpenCL drivers, run the following to download the Julia OpenCL package:
+```julia
+Pkg.add("OpenCL")
+```
+
+
+## 3. Test and precompile packages
+
+Please also run the following lines in the REPL. This will check whether the
+installation was successful and also precompile some Julia code or even some
+third-party C libraries.
+
+```julia
+using IJulia
+using DataFrames
+using Plots
+using PyPlot
+using StatPlots
+using JuMP
+using Cbc
+using BenchmarkTools
+using ProfileView
+```
+
+```julia
+using Gallium
+```
+
+```julia
+using OpenCL
+```
+
+Once that is finished, you can also try to start the Jupyter notebook server, by
+calling `notebook()` in the REPL, which should open a browser menu.
+
 
 ## Join us at the Julia Users Group - Berlin
 
