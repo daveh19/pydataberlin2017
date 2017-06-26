@@ -6,6 +6,10 @@ workshop. They have been tested on Mac OS X and Debian Stretch.
 
 The actual material will be published just before the event.
 
+## Join us at the Julia Users Group - Berlin
+
+After the workshop you may wish to join us at our bi-monthly meet-up in Berlin. Check our [website](http://julia-users-berlin.github.io) or [meet-up.com](https://www.meetup.com/Julia-Users-Group/) for details.
+
 ## 1. Install Julia
 
 For this workshop, we will use Julia v0.6 which was released on June 19th 2017.
@@ -77,8 +81,3 @@ using OpenCL
 
 Once that is finished, you can also try to start the Jupyter notebook server, by
 calling `notebook()` in the REPL, which should open a browser menu.
-
-
-## Join us at the Julia Users Group - Berlin
-
-After the workshop you may wish to join us at our bi-monthly meet-up in Berlin. Check our [website](http://julia-users-berlin.github.io) or [meet-up.com](https://www.meetup.com/Julia-Users-Group/) for details.
