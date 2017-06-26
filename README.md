@@ -32,7 +32,7 @@ Pkg.add("ProfileView")
 
 Please also attempt to install Gallium, but it may not be updated properly to version 0.6 yet:
 
-```
+```julia
 Pkg.add("Gallium")
 ```
 
@@ -40,12 +40,12 @@ Pkg.add("Gallium")
 
 If you want to install OpenCL there are a number of options:
 1. If you have an NVIDIA GPU then you automatically have OpenCL installed if you install CUDA development system. Note that the NVIDIA implementation can only compile OpenCL for the GPU device.
-2. You can install ATIs APP SDK, which is natively OpenCL, for ATI GPU devices. This system can also compile for CPU giving you the best of both worlds!
+2. You can install ATIs APP SDK, which is natively OpenCL, for ATI GPU devices. _This system can also compile for CPU giving you the best of both worlds!_
 3. Intel provide OpenCL compilers for CPUs.
 4. Apple pre-install OpenCL support on their computers, for both CPU and GPU.
 
 Following installation of the OpenCL drivers, run the following to download the Julia OpenCL package:
-```
+```julia
 Pkg.add("OpenCL")
 ```
 
@@ -68,11 +68,11 @@ using BenchmarkTools
 using ProfileView
 ```
 
-```
+```julia
 using Gallium
 ```
 
-```
+```julia
 using OpenCL
 ```
 
