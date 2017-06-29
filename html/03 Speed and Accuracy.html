@@ -11816,9 +11816,9 @@ You've already seen</p>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>ccall((:clock,), Int64, ()) = 5337978
-ccall((:clock,), Int64, ()) = 5572112
-ccall((:clock,), Int64, ()) = 5579054
+<pre>ccall((:clock,), Int64, ()) = 3553269
+ccall((:clock,), Int64, ()) = 3693337
+ccall((:clock,), Int64, ()) = 3699727
 </pre>
 </div>
 </div>
@@ -11827,7 +11827,7 @@ ccall((:clock,), Int64, ()) = 5579054
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>5579054</pre>
+<pre>3699727</pre>
 </div>
 
 </div>
@@ -12083,7 +12083,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;OpenCL&quot;</span><span class="p">)</span>
@@ -12093,26 +12093,10 @@ Stacktrace:
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre><span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">Package OpenCL is already installed
-</span><span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">METADATA is out-of-date — you may not have the latest version of OpenCL
-</span><span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">Use `Pkg.update()` to get the latest versions of your packages
-</span></pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">OpenCL</span>
@@ -12136,7 +12120,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> print_cl_stuff</span><span class="p">()</span>
@@ -12162,7 +12146,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12193,7 +12177,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">print_cl_stuff</span><span class="p">()</span>
@@ -12212,7 +12196,9 @@ Stacktrace:
 <pre>Number of Platforms: 1
 Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 	Number of Devices: 2
-	Device[</pre>
+	Device[1]: OpenCL.Device(Intel(R) Core(TM) i5-4308U CPU @ 2.80GHz on Apple @0x00000000ffffffff)
+	Device[2]: OpenCL.Device(Iris on Apple @0x0000000001024500)
+</pre>
 </div>
 </div>
 
@@ -12242,7 +12228,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> set_device</span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span> <span class="n">platform</span><span class="p">)</span>
@@ -12273,7 +12259,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">our_platform</span> <span class="o">=</span> <span class="n">set_platform</span><span class="p">()</span>
@@ -12287,7 +12273,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12302,7 +12288,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">cl</span><span class="o">.</span><span class="n">Platform</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -12316,7 +12302,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12341,7 +12327,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">our_device</span> <span class="o">=</span> <span class="n">set_device</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -12355,7 +12341,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12380,7 +12366,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">cl</span><span class="o">.</span><span class="n">devices</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
@@ -12394,7 +12380,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12409,7 +12395,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">our_context</span> <span class="o">=</span> <span class="n">set_context</span><span class="p">(</span><span class="n">our_device</span><span class="p">)</span>
@@ -12423,11 +12409,11 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>OpenCL.Context(@0x00007ffd0e925ad0 on Intel(R) Core(TM) i5-4308U CPU @ 2.80GHz)</pre>
+<pre>OpenCL.Context(@0x00007fbc94bd3ab0 on Intel(R) Core(TM) i5-4308U CPU @ 2.80GHz)</pre>
 </div>
 
 </div>
@@ -12448,7 +12434,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">cl</span><span class="o">.</span><span class="n">CLError</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
@@ -12462,7 +12448,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12487,7 +12473,7 @@ Platform[1]: OpenCL.Platform(&#39;Apple&#39; @0x000000007fff0000)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">cl</span><span class="o">.</span><span class="n">error_description</span><span class="p">(</span><span class="n">cl</span><span class="o">.</span><span class="n">CLError</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">))</span>
@@ -12539,7 +12525,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">diff_kernel</span> <span class="o">=</span> <span class="s">&quot;</span>
@@ -12572,7 +12558,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">sum_kernel</span> <span class="o">=</span> <span class="s">&quot;</span>
@@ -12604,7 +12590,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> initial_cond</span><span class="p">(</span><span class="n">big_array</span><span class="o">=</span><span class="n">true</span><span class="p">)</span>
@@ -12625,7 +12611,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> do_openCL</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">device_index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -12666,7 +12652,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12681,7 +12667,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">do_openCL</span><span class="p">(</span><span class="n">initial_cond</span><span class="p">(</span><span class="n">true</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
@@ -12697,7 +12683,8 @@ Stacktrace:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>OpenCL.Context(@0x00007ffd0cf3e7b0 on Iris)OpenCL.Device(Iris on Apple @0x0000000001024500)OpenCL.CmdQueue(@0x00007ffd0ccc3e60) 45.</pre>
+<pre>OpenCL.Context(@0x00007fbc94d77820 on Iris)OpenCL.Device(Iris on Apple @0x0000000001024500)OpenCL.CmdQueue(@0x00007fbc94be1550) 32.532243 seconds (455.68 k allocations: 213.876 MiB, 0.50% gc time)
+</pre>
 </div>
 </div>
 
@@ -12718,7 +12705,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">plot_result_cpu</span> <span class="o">=</span> <span class="n">do_openCL</span><span class="p">(</span><span class="n">initial_cond</span><span class="p">(</span><span class="n">false</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
@@ -12734,7 +12721,8 @@ Stacktrace:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>OpenCL.Context(@0x00007ffd0e928c90 on Intel(R) Core(TM) i5-4308U CPU @ 2.80GHz)OpenCL.Device(Intel(R) Core(TM) i5-4308U CPU @ 2.80GHz on Apple @0x00000000ffffffff)OpenCL.CmdQueue(@0x00007ffd0e958c70) 16.</pre>
+<pre>OpenCL.Context(@0x00007fbc94c892f0 on Intel(R) Core(TM) i5-4308U CPU @ 2.80GHz)OpenCL.Device(Intel(R) Core(TM) i5-4308U CPU @ 2.80GHz on Apple @0x00000000ffffffff)OpenCL.CmdQueue(@0x00007fbc94c79380) 13.551928 seconds (87.32 k allocations: 10.011 MiB)
+</pre>
 </div>
 </div>
 
@@ -12755,7 +12743,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">(</span><span class="mi">25</span><span class="o">*</span><span class="mi">15</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
@@ -12769,7 +12757,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[26]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12784,7 +12772,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">plot_result_gpu</span> <span class="o">=</span> <span class="n">do_openCL</span><span class="p">(</span><span class="n">initial_cond</span><span class="p">(</span><span class="n">false</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
@@ -12800,7 +12788,7 @@ Stacktrace:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>OpenCL.Context(@0x00007ffd0e70fdc0 on Iris)OpenCL.Device(Iris on Apple @0x0000000001024500)OpenCL.CmdQueue(@0x00007ffd0e95d6e0)  2.700885 seconds (87.35 k allocations: 10.011 MiB)
+<pre>OpenCL.Context(@0x00007fbc94c7eca0 on Iris)OpenCL.Device(Iris on Apple @0x0000000001024500)OpenCL.CmdQueue(@0x00007fbc94ca2940)  1.916094 seconds (87.32 k allocations: 10.010 MiB)
 </pre>
 </div>
 </div>
@@ -12821,7 +12809,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> diff_step</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
@@ -12869,7 +12857,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">naive_result</span> <span class="o">=</span> <span class="n">do_naive</span><span class="p">(</span><span class="n">initial_cond</span><span class="p">(</span><span class="n">false</span><span class="p">));</span>
@@ -12885,7 +12873,8 @@ Stacktrace:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre> 28</pre>
+<pre> 24.539885 seconds (206.32 k allocations: 14.918 GiB, 7.90% gc time)
+</pre>
 </div>
 </div>
 
@@ -12906,10 +12895,65 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">initial_conditions_array</span> <span class="o">=</span> <span class="n">initial_cond</span><span class="p">(</span><span class="n">false</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1000×1000 Array{Float32,2}:
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ ⋮                        ⋮              ⋱            ⋮                      
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">extrema</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12924,33 +12968,7 @@ Stacktrace:
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>1000×1000 Array{Float32,2}:
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- ⋮                        ⋮              ⋱            ⋮                      
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0</pre>
+<pre>(0.0f0, 10000.0f0)</pre>
 </div>
 
 </div>
@@ -12964,7 +12982,7 @@ Stacktrace:
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">extrema</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">size</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12979,7 +12997,7 @@ Stacktrace:
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.0f0, 10000.0f0)</pre>
+<pre>(1000, 1000)</pre>
 </div>
 
 </div>
@@ -12993,35 +13011,6 @@ Stacktrace:
 <div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">size</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[32]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(1000, 1000)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">plot_result_cpu</span>
 </pre></div>
 
@@ -13033,7 +13022,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[33]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[32]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13074,7 +13063,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">extrema</span><span class="p">(</span><span class="n">plot_result_cpu</span><span class="p">)</span>
@@ -13088,7 +13077,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[34]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[33]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13103,7 +13092,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">size</span><span class="p">(</span><span class="n">plot_result_cpu</span><span class="p">)</span>
@@ -13117,7 +13106,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[34]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13132,7 +13121,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">initial_conditions_array</span><span class="p">[</span><span class="n">initial_conditions_array</span><span class="o">.&gt;</span><span class="mi">0</span><span class="p">]</span>
@@ -13146,7 +13135,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[36]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13162,7 +13151,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">plot_result_cpu</span><span class="p">[</span><span class="n">plot_result_cpu</span><span class="o">.&gt;</span><span class="mi">0</span><span class="p">]</span>
@@ -13176,7 +13165,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[37]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[36]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13217,14 +13206,43 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">PyCall</span>
-<span class="p">@</span><span class="n">pyimport</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">mplot</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">PyPlot</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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"
+>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13234,10 +13252,36 @@ Stacktrace:
 <div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">mplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">);</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">imshow</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">[</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">])</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaUAAAGgCAYAAAAKH3gdAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAHLJJREFUeJzt3X9s1fW9x/HXkWMPHbZHO+w5PWlxB0EMupaI0jQSh7bS9hrWbv4xjImgZmRNMTbMoV2ESWQ5iInBGtKamYlkw7qYFBJzKcOO1hHbDioE1IyA1lkGp8wmPac9s0dsP/ePXc88Asppz6Gfnj4fyTfxfH+c8+4nxGfOr9ZhjDECAMACV032AAAAfIUoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANZwTvYA3zQ2NqYzZ84oKytLDodjsscBACTIGKOhoSH5fD5ddVViz32si9KZM2dUUFAw2WMAACaor69P+fn5CV2Tsiht375dzz//vILBoIqKivTSSy9pyZIl33ldVlaWJGmp/kdOXZ2q8QAAKfKlzuug/jf2//NEpCRKb7zxhtatW6empiYVFxdr27ZtKi8v14kTJ5Sbm/ut1371kp1TV8vpIEoAMOX8/x9EGs9bMCn5oMMLL7ygn//853r44Ye1cOFCNTU16Xvf+55+//vfX3BuNBpVOByO2wAA01PSo/TFF1+op6dHZWVl/32Qq65SWVmZOjs7Lzg/EAjI7XbHNt5PAoDpK+lR+uyzzzQ6OiqPxxO33+PxKBgMXnB+fX29QqFQbOvr60v2SACAKWLSP33ncrnkcrkmewwAgAWS/kxp9uzZmjFjhvr7++P29/f3y+v1JvvhAABpJOlRysjI0OLFi9XW1hbbNzY2pra2NpWUlCT74QAAaSQlL9+tW7dOq1at0u23364lS5Zo27ZtikQievjhh1PxcACANJGSKP3sZz/Tv/71L23cuFHBYFCLFi1Sa2vrBR9+AADg6xzGGDPZQ3xdOByW2+3WMlXx5VkAmIK+NOfVrj0KhULKzs5O6Fp+SzgAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgjaRH6ZlnnpHD4Yjbbr755mQ/DAAgDTlTcae33HKL3n777f8+iDMlDwMASDMpqYXT6ZTX672sc6PRqKLRaOx2OBxOxUgAgCkgJe8pnTx5Uj6fT3PnztWDDz6oTz/99JLnBgIBud3u2FZQUJCKkQAAU4DDGGOSeYd79+7V8PCwFixYoLNnz2rTpk365z//qffff19ZWVkXnH+xZ0oFBQVapio5HVcnczQAwBXwpTmvdu1RKBRSdnZ2Qtcm/eW7ysrK2H8XFhaquLhYN9xwg/70pz/p0UcfveB8l8sll8uV7DEAAFNQyj8Sfu211+qmm27SqVOnUv1QAIApLuVRGh4e1qlTp5SXl5fqhwIATHFJj9ITTzyhjo4OffLJJ3r33Xf1k5/8RE6nUw888ECyHwoAkGaS/p7S6dOn9cADD2hgYEDXX3+9li5dqq6uLl1//fXJfigAQJpJepSam5uTfZcAgGmC330HALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWCPhKL3zzjtasWKFfD6fHA6Hdu/eHXfcGKONGzcqLy9PmZmZKisr08mTJ5M2MAAgfSUcpUgkoqKiIm3fvv2ix7du3aqGhgY1NTWpu7tbs2bNUnl5uUZGRiY8LAAgvTkTvaCyslKVlZUXPWaM0bZt2/T000+rqqpKkrRz5055PB7t3r1bK1euvOCaaDSqaDQaux0OhxMdCQCQJpL6nlJvb6+CwaDKyspi+9xut4qLi9XZ2XnRawKBgNxud2wrKChI5kgAgCkkqVEKBoOSJI/HE7ff4/HEjn1TfX29QqFQbOvr60vmSACAKSThl++SzeVyyeVyTfYYAAALJPWZktfrlST19/fH7e/v748dAwDgUpIaJb/fL6/Xq7a2tti+cDis7u5ulZSUJPOhAABpKOGX74aHh3Xq1KnY7d7eXh09elQ5OTmaM2eO6urqtHnzZs2fP19+v18bNmyQz+dTdXV1UgcHAKSfhKN0+PBh3X333bHb69atkyStWrVKO3bs0Pr16xWJRLRmzRoNDg5q6dKlam1t1cyZM5M3NQAgLTmMMWayh/i6cDgst9utZaqS03H1ZI8DAEjQl+a82rVHoVBI2dnZCV3L774DAFiDKAEArEGUAADWIEoAAGsQJQCANYgSAMAaRAkAYA2iBACwBlECAFiDKAEArEGUAADWIEoAAGsQJQCANYgSAMAaRAkAYA2iBACwBlECAFiDKAEArEGUAADWIEoAAGsQJQCANYgSAMAaRAkAYA2iBACwBlECAFiDKAEArEGUAADWIEoAAGsQJQCANYgSAMAaRAkAYA2iBACwBlECAFiDKAEArJFwlN555x2tWLFCPp9PDodDu3fvjju+evVqORyOuK2ioiJpAwMA0lfCUYpEIioqKtL27dsveU5FRYXOnj0b215//fUJDQkAmB6ciV5QWVmpysrKbz3H5XLJ6/Ve1v1Fo1FFo9HY7XA4nOhIAIA0kZL3lNrb25Wbm6sFCxaopqZGAwMDlzw3EAjI7XbHtoKCglSMBACYApIepYqKCu3cuVNtbW167rnn1NHRocrKSo2Ojl70/Pr6eoVCodjW19eX7JEAAFNEwi/ffZeVK1fG/vuHP/yhCgsLdeONN6q9vV2lpaUXnO9yueRyuZI9BgBgCkr5R8Lnzp2r2bNn69SpU6l+KADAFJfyKJ0+fVoDAwPKy8tL9UMBAKa4hF++Gx4ejnvW09vbq6NHjyonJ0c5OTnatGmT7r//fnm9Xn300Udav3695s2bp/Ly8qQODgBIPwlH6fDhw7r77rtjt9etWydJWrVqlRobG3Xs2DG99tprGhwclM/n0/Lly/Xss8/yvhEA4DslHKVly5bJGHPJ4/v27ZvQQACA6YvffQcAsAZRAgBYgygBAKxBlAAA1iBKAABrECUAgDWIEgDAGkQJAGANogQAsAZRAgBYgygBAKxBlAAA1iBKAABrECUAgDWIEgDAGkQJAGANogQAsAZRAgBYgygBAKxBlAAA1iBKAABrECUAgDWIEgDAGkQJAGANogQAsAZRAgBYgygBAKxBlAAA1iBKAABrECUAgDWIEgDAGkQJAGAN52QPAKS7fWeOXtZ55b5FKZ4EsB/PlAAA1kgoSoFAQHfccYeysrKUm5ur6upqnThxIu4cY4w2btyovLw8ZWZmqqysTCdPnkzq0ACA9JRQlDo6OlRbW6uuri7t379f58+f1/LlyxWJRGLnbN26VQ0NDWpqalJ3d7dmzZql8vJyjYyMJH14AEB6Seg9pdbW1rjbO3bsUG5urnp6enTXXXfJGKNt27bp6aefVlVVlSRp586d8ng82r17t1auXHnBfUajUUWj0djtcDg8np8DAJAGJvSeUigUkiTl5ORIknp7exUMBlVWVhY7x+12q7i4WJ2dnRe9j0AgILfbHdsKCgomMhIAYAobd5TGxsZUV1enO++8U7feeqskKRgMSpI8Hk/cuR6PJ3bsm+rr6xUKhWJbX1/feEcCAExx4/5IeG1trd5//30dPHhwQgO4XC65XK4J3QcAID2M65nS2rVr9dZbb+nAgQPKz8+P7fd6vZKk/v7+uPP7+/tjxwAAuJSEnikZY/TYY4+ppaVF7e3t8vv9ccf9fr+8Xq/a2tq0aNF/vggYDofV3d2tmpqa5E0NTCF8KRa4fAlFqba2Vrt27dKePXuUlZUVe5/I7XYrMzNTDodDdXV12rx5s+bPny+/368NGzbI5/Opuro6JT8AACB9JBSlxsZGSdKyZcvi9r/66qtavXq1JGn9+vWKRCJas2aNBgcHtXTpUrW2tmrmzJlJGRgAkL4cxhgz2UN8XTgcltvt1jJVyem4erLHAQAk6EtzXu3ao1AopOzs7ISu5XffAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANZIKEqBQEB33HGHsrKylJubq+rqap04cSLunNWrV8vhcMRtFRUVSR0aAJCeEopSR0eHamtr1dXVpf379+v8+fNavny5IpFI3HkVFRU6e/ZsbHv99deTOjQAID05Ezm5tbU17vaOHTuUm5urnp4e3XXXXbH9LpdLXq83ORMCAKaNCb2nFAqFJEk5OTlx+9vb25Wbm6sFCxaopqZGAwMDl7yPaDSqcDgctwEApqdxR2lsbEx1dXW68847deutt8b2V1RUaOfOnWpra9Nzzz2njo4OVVZWanR09KL3EwgE5Ha7Y1tBQcF4RwIATHEOY4wZz4U1NTXau3evDh48qPz8/Eue9/HHH+vGG2/U22+/rdLS0guOR6NRRaPR2O1wOKyCggItU5WcjqvHMxoAYBJ9ac6rXXsUCoWUnZ2d0LXjeqa0du1avfXWWzpw4MC3BkmS5s6dq9mzZ+vUqVMXPe5yuZSdnR23AQCmp4Q+6GCM0WOPPaaWlha1t7fL7/d/5zWnT5/WwMCA8vLyxj0kAGB6SOiZUm1trf7whz9o165dysrKUjAYVDAY1Oeffy5JGh4e1q9+9St1dXXpk08+UVtbm6qqqjRv3jyVl5en5AcAAKSPhKLU2NioUCikZcuWKS8vL7a98cYbkqQZM2bo2LFj+vGPf6ybbrpJjz76qBYvXqy//vWvcrlcKfkBAADpI+GX775NZmam9u3bN6GBAADTF7/7DgBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALAGUQIAWIMoAQCsQZQAANYgSgAAaxAlAIA1iBIAwBpECQBgDaIEALBGQlFqbGxUYWGhsrOzlZ2drZKSEu3duzd23BijjRs3Ki8vT5mZmSorK9PJkyeTPjQAID0lFKX8/Hxt2bJFPT09Onz4sO655x5VVVXpgw8+kCRt3bpVDQ0NampqUnd3t2bNmqXy8nKNjIykZHgAQHpxGGPMRO4gJydHzz//vB555BH5fD798pe/1BNPPCFJCoVC8ng82rFjh1auXHlZ9xcOh+V2u7VMVXI6rp7IaACASfClOa927VEoFFJ2dnZC1477PaXR0VE1NzcrEomopKREvb29CgaDKisri53jdrtVXFyszs7OS95PNBpVOByO2wAA01PCUTp+/LiuueYauVwu/eIXv1BLS4sWLlyoYDAoSfJ4PHHnezye2LGLCQQCcrvdsa2goCDRkQAAaSLhKC1YsEBHjx5Vd3e3ampqtGrVKn344YfjHqC+vl6hUCi29fX1jfu+AABTmzPRCzIyMjRv3jxJ0uLFi3Xo0CG9+OKLevLJJyVJ/f39ysvLi53f39+vRYsWXfL+XC6XXC5XomMAANLQhL+nNDY2pmg0Kr/fL6/Xq7a2ttixcDis7u5ulZSUTPRhAADTQELPlOrr61VZWak5c+ZoaGhIu3btUnt7u/bt2yeHw6G6ujpt3rxZ8+fPl9/v14YNG+Tz+VRdXZ2q+QEAaSShKJ07d04PPfSQzp49K7fbrcLCQu3bt0/33nuvJGn9+vWKRCJas2aNBgcHtXTpUrW2tmrmzJkpGR4AkF4m/D2lZON7SgAwtU3K95QAAEg2ogQAsAZRAgBYgygBAKxBlAAA1iBKAABrECUAgDWIEgDAGkQJAGANogQAsAZRAgBYgygBAKxBlAAA1iBKAABrECUAgDWIEgDAGkQJAGANogQAsAZRAgBYgygBAKxBlAAA1iBKAABrECUAgDWIEgDAGkQJAGANogQAsAZRAgBYgygBAKxBlAAA1iBKAABrECUAgDWIEgDAGkQJAGANogQAsEZCUWpsbFRhYaGys7OVnZ2tkpIS7d27N3Z89erVcjgccVtFRUXShwYApCdnIifn5+dry5Ytmj9/vowxeu2111RVVaUjR47olltukSRVVFTo1VdfjV3jcrmSOzEAIG0lFKUVK1bE3f7tb3+rxsZGdXV1xaLkcrnk9XqTNyEAYNoY93tKo6Ojam5uViQSUUlJSWx/e3u7cnNztWDBAtXU1GhgYOBb7ycajSocDsdtAIDpKaFnSpJ0/PhxlZSUaGRkRNdcc41aWlq0cOFCSf956e6nP/2p/H6/PvroI/36179WZWWlOjs7NWPGjIveXyAQ0KZNmyb2UwAA0oLDGGMSueCLL77Qp59+qlAopDfffFOvvPKKOjo6YmH6uo8//lg33nij3n77bZWWll70/qLRqKLRaOx2OBxWQUGBlqlKTsfVCf44AIDJ9qU5r3btUSgUUnZ2dkLXJvzyXUZGhubNm6fFixcrEAioqKhIL7744kXPnTt3rmbPnq1Tp05d8v5cLlfs03xfbQCA6WnC31MaGxuLe6bzdadPn9bAwIDy8vIm+jAAgGkgofeU6uvrVVlZqTlz5mhoaEi7du1Se3u79u3bp+HhYW3atEn333+/vF6vPvroI61fv17z5s1TeXl5quYHAKSRhKJ07tw5PfTQQzp79qzcbrcKCwu1b98+3Xvvvfr888917NgxvfbaaxocHJTP59Py5cv17LPP8l0lAMBlSfiDDqkWDofldrv5oAMATFFX9IMOAACkClECAFiDKAEArEGUAADWIEoAAGsQJQCANYgSAMAaRAkAYA2iBACwBlECAFiDKAEArEGUAADWIEoAAGsQJQCANYgSAMAaRAkAYA2iBACwBlECAFiDKAEArEGUAADWIEoAAGsQJQCANYgSAMAaRAkAYA2iBACwBlECAFiDKAEArEGUAADWIEoAAGsQJQCANYgSAMAaRAkAYA2iBACwBlECAFhjQlHasmWLHA6H6urqYvuMMdq4caPy8vKUmZmpsrIynTx5csKDAgDS37ijdOjQIb388ssqLCyM279161Y1NDSoqalJ3d3dmjVrlsrLyzUyMjLhYQEA6W1cURoeHtaDDz6o3/3ud7ruuuti+40x2rZtm55++mlVVVWpsLBQO3fu1JkzZ7R79+6kDQ0ASE/jilJtba3uu+8+lZWVxe3v7e1VMBiM2+92u1VcXKzOzs6L3lc0GlU4HI7bAADTkzPRC5qbm/Xee+/p0KFDFxwLBoOSJI/HE7ff4/HEjn1TIBDQpk2bEh0DAJCGEnqm1NfXp8cff1x//OMfNXPmzKQMUF9fr1AoFNv6+vqScr8AgKknoSj19PTo3Llzuu222+R0OuV0OtXR0aGGhgY5nc7YM6T+/v646/r7++X1ei96ny6XS9nZ2XEbAGB6Sujlu9LSUh0/fjxu38MPP6ybb75ZTz75pObOnSuv16u2tjYtWrRIkhQOh9Xd3a2amprLegxjjCTpS52XTCLTAQBs8KXOS/rv/88TkVCUsrKydOutt8btmzVrlr7//e/H9tfV1Wnz5s2aP3++/H6/NmzYIJ/Pp+rq6st6jKGhIUnSQf1vIqMBACwzNDQkt9ud0DUJf9Dhu6xfv16RSERr1qzR4OCgli5dqtbW1st+D8rn86mvr09ZWVlyOByS/vNsq6CgQH19fby8l0Ks85XBOl8ZrPOV8821NsZoaGhIPp8v4ftymPE8v7rCwuGw3G63QqEQ/7hSiHW+MljnK4N1vnKSudb87jsAgDWIEgDAGjOeeeaZZyZ7iMsxY8YMLVu2TE5n0t8Gw9ewzlcG63xlsM5XTrLWekq8pwQAmB54+Q4AYA2iBACwBlECAFiDKAEArEGUAADWsD5K27dv1w9+8APNnDlTxcXF+tvf/jbZI01577zzjlasWCGfzyeHw3HBXwU2xmjjxo3Ky8tTZmamysrKdPLkyUmadmoKBAK64447lJWVpdzcXFVXV+vEiRNx57DOydHY2KjCwsLYXxkoKSnR3r17Y8dZ5+TbsmWLHA6H6urqYvuStc5WR+mNN97QunXr9Jvf/EbvvfeeioqKVF5ernPnzk32aFNaJBJRUVGRtm/fftHjW7duVUNDg5qamtTd3a1Zs2apvLxcIyMjV3jSqaujo0O1tbXq6urS/v37df78eS1fvlyRSCR2DuucHPn5+dqyZYt6enp0+PBh3XPPPaqqqtIHH3wgiXVOtkOHDunll19WYWFh3P6krbOx2JIlS0xtbW3s9ujoqPH5fCYQCEziVOlFkmlpaYndHhsbM16v1zz//POxfYODg8blcpnXX399MkZMC+fOnTOSTEdHhzGGdU616667zrzyyiusc5INDQ2Z+fPnm/3795sf/ehH5vHHHzfGJPffs7XPlL744gv19PSorKwstu+qq65SWVmZOjs7J3Gy9Nbb26tgMBi37m63W8XFxaz7BIRCIUlSTk6OJNY5VUZHR9Xc3KxIJKKSkhLWOclqa2t13333xa2nlNx/z9b+7o3PPvtMo6Ojsb9m+xWPx6O///3vkzRV+gsGg5J00XX/6hgSMzY2prq6Ot15552xvzvGOifX8ePHVVJSopGREV1zzTVqaWnRwoUL9e6770pinZOhublZ7733ng4dOnTBsWT+e7Y2SkC6qK2t1fvvv6+DBw9O9ihpa8GCBTp69KhCoZDefPNNrVq1Sh0dHZM9Vtro6+vT448/rv3791/238YbL2tfvps9e7ZmzJih/v7+uP39/f3yer2TNFX6+2ptWffkWLt2rd566y0dOHBA+fn5sf2sc3JlZGRo3rx5Wrx4sQKBgIqKivTiiy+yzknS09Ojc+fO6bbbbpPT6ZTT6VRHR4caGhrkdDpjz5CSsc7WRikjI0OLFy9WW1tbbN/Y2Jja2tpUUlIyiZOlN7/fL6/XG7fu4XBY3d3drHsCjDFau3atWlpa9Je//EV+vz/uOOucWmNjY4pGo6xzkpSWlur48eM6evRobLv99tv14IMP6ujRo5o7d27y1jmZn8xItubmZuNyucyOHTvMhx9+aNasWWOuvfZaEwwGJ3u0KW1oaMgcOXLEHDlyxEgyL7zwgjly5Ij5xz/+YYwxZsuWLebaa681e/bsMceOHTNVVVXG7/ebzz//fJInnzpqamqM2+027e3t5uzZs7Ht3//+d+wc1jk5nnrqKdPR0WF6e3vNsWPHzFNPPWUcDof585//bIxhnVPl65++MyZ562x1lIwx5qWXXjJz5swxGRkZZsmSJaarq2uyR5ryDhw4YCRdsK1atcoY85+Pd27YsMF4PB7jcrlMaWmpOXHixOQOPcVcbH0lmVdffTV2DuucHI888oi54YYbTEZGhrn++utNaWlpLEjGsM6p8s0oJWud+XtKAABrWPueEgBg+iFKAABrECUAgDWIEgDAGkQJAGANogQAsAZRAgBYgygBAKxBlAAA1iBKAABrECUAgDX+D8oUlJYYnQmoAAAAAElFTkSuQmCC"
+>
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[39]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>PyObject &lt;matplotlib.image.AxesImage object at 0x122580110&gt;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13247,7 +13291,7 @@ Stacktrace:
 <div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">mplot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">[</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">])</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">imshow</span><span class="p">(</span><span class="n">plot_result_cpu</span><span class="p">[</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -13257,41 +13301,22 @@ Stacktrace:
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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"
+>
+</div>
+
+</div>
 
 <div class="output_area"><div class="prompt output_prompt">Out[40]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>PyObject &lt;matplotlib.image.AxesImage object at 0x12e1ed2d0&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">mplot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">plot_result_cpu</span><span class="p">[</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[41]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>PyObject &lt;matplotlib.image.AxesImage object at 0x12f13fdd0&gt;</pre>
+<pre>PyObject &lt;matplotlib.image.AxesImage object at 0x122641410&gt;</pre>
 </div>
 
 </div>
@@ -13330,7 +13355,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> do_my_loop</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -13350,7 +13375,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[42]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[41]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13365,7 +13390,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">do_my_loop</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
@@ -13381,7 +13406,7 @@ Stacktrace:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  0.063757 seconds (5.32 k allocations: 7.921 MiB, 24.36% gc time)
+<pre>  0.046382 seconds (5.43 k allocations: 7.926 MiB, 20.27% gc time)
 </pre>
 </div>
 </div>
@@ -13402,7 +13427,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
@@ -13418,7 +13443,8 @@ Stacktrace:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  </pre>
+<pre>  2.832860 seconds (6 allocations: 762.940 MiB, 0.62% gc time)
+</pre>
 </div>
 </div>
 
@@ -13428,7 +13454,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> alternative_do_my_loop</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -13448,7 +13474,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[45]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[44]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13463,7 +13489,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
@@ -13479,7 +13505,8 @@ Stacktrace:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  </pre>
+<pre>  2.469482 seconds (1.98 k allocations: 763.042 MiB, 7.63% gc time)
+</pre>
 </div>
 </div>
 
@@ -13489,7 +13516,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> final_alternative_do_my_loop</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -13507,7 +13534,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[47]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[46]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13522,7 +13549,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">final_alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
@@ -13538,7 +13565,8 @@ Stacktrace:
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  </pre>
+<pre>  0.897162 seconds (25.83 k allocations: 1.491 GiB, 19.37% gc time)
+</pre>
 </div>
 </div>
 
@@ -13567,7 +13595,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;BenchmarkTools&quot;</span><span class="p">)</span>
@@ -13585,6 +13613,7 @@ Stacktrace:
 <div class="output_subarea output_stream output_stderr output_text">
 <pre><span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">Package BenchmarkTools is already installed
 </span><span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">METADATA is out-of-date — you may not have the latest version of BenchmarkTools
+</span><span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">Use `Pkg.update()` to get the latest versions of your packages
 </span></pre>
 </div>
 </div>
@@ -13595,7 +13624,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span>
@@ -13619,10 +13648,49 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[50]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  762.94 MiB
+  allocs estimate:  2
+  --------------
+  minimum time:     2.149 s (0.72% GC)
+  median time:      2.229 s (3.93% GC)
+  mean time:        2.257 s (2.96% GC)
+  maximum time:     2.394 s (3.66% GC)
+  --------------
+  samples:          3
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13641,12 +13709,12 @@ Stacktrace:
   memory estimate:  762.94 MiB
   allocs estimate:  2
   --------------
-  minimum time:     2.916 s (0.50% GC)
-  median time:      2.993 s (2.17% GC)
-  mean time:        2.993 s (2.17% GC)
-  maximum time:     3.071 s (3.75% GC)
+  minimum time:     2.248 s (0.65% GC)
+  median time:      2.338 s (3.66% GC)
+  mean time:        2.310 s (2.87% GC)
+  maximum time:     2.343 s (3.65% GC)
   --------------
-  samples:          2
+  samples:          3
   evals/sample:     1</pre>
 </div>
 
@@ -13661,7 +13729,7 @@ Stacktrace:
 <div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">final_alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13677,54 +13745,15 @@ Stacktrace:
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
-  memory estimate:  762.94 MiB
-  allocs estimate:  2
-  --------------
-  minimum time:     3.225 s (3.87% GC)
-  median time:      3.294 s (2.10% GC)
-  mean time:        3.294 s (2.10% GC)
-  maximum time:     3.363 s (0.41% GC)
-  --------------
-  samples:          2
-  evals/sample:     1</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">final_alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[53]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
   memory estimate:  1.49 GiB
   allocs estimate:  4
   --------------
-  minimum time:     770.166 ms (10.96% GC)
-  median time:      822.267 ms (13.06% GC)
-  mean time:        853.432 ms (12.49% GC)
-  maximum time:     1.036 s (11.82% GC)
+  minimum time:     625.886 ms (9.52% GC)
+  median time:      642.906 ms (9.12% GC)
+  mean time:        652.142 ms (11.33% GC)
+  maximum time:     696.813 ms (15.42% GC)
   --------------
-  samples:          6
+  samples:          8
   evals/sample:     1</pre>
 </div>
 
@@ -13746,7 +13775,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
@@ -13759,7 +13788,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">max</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
@@ -13773,7 +13802,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[55]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[54]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13781,12 +13810,12 @@ Stacktrace:
   memory estimate:  7.63 MiB
   allocs estimate:  29
   --------------
-  minimum time:     3.449 ms (0.00% GC)
-  median time:      4.838 ms (0.00% GC)
-  mean time:        5.999 ms (23.44% GC)
-  maximum time:     18.866 ms (50.88% GC)
+  minimum time:     3.381 ms (0.00% GC)
+  median time:      3.533 ms (0.00% GC)
+  mean time:        4.684 ms (24.02% GC)
+  maximum time:     8.527 ms (46.19% GC)
   --------------
-  samples:          830
+  samples:          1064
   evals/sample:     1</pre>
 </div>
 
@@ -13820,7 +13849,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Profile</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">delay</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
@@ -13833,7 +13862,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
@@ -13846,7 +13875,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Profile</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
@@ -13869,7 +13898,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">profile</span> <span class="n">do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
@@ -13893,7 +13922,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">ProfileView</span>
@@ -13916,7 +13945,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">ProfileView</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
@@ -13930,110 +13959,112 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[61]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[60]:</div>
 
 <div class="output_svg output_subarea output_execute_result">
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" >
+<svg version="1.1" width="1200" height="415" viewBox="0 0 1200 415" xmlns="http://www.w3.org/2000/svg" >
 <defs >
     <linearGradient id="background" y1="0" y2="1" x1="0" x2="0" >
         <stop stop-color="#eeeeee" offset="5%" />
         <stop stop-color="#eeeeb0" offset="95%" />
     </linearGradient>
-    <clipPath id="fig-dfc58789c77e4075b2bab32507efcdad-image-frame">
-      <rect id="fig-dfc58789c77e4075b2bab32507efcdad-clip-rect" x="0" y="0" width="1200" height="400" />
+    <clipPath id="fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-image-frame">
+      <rect id="fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-clip-rect" x="0" y="0" width="1200" height="415" />
     </clipPath>
 </defs>
 <style type="text/css">
     rect[rx]:hover { stroke:black; stroke-width:1; }
     text:hover { stroke:black; stroke-width:1; stroke-opacity:0.35; }
 </style>
-<g id="fig-dfc58789c77e4075b2bab32507efcdad-frame" clip-path="url(#fig-dfc58789c77e4075b2bab32507efcdad-image-frame)">
-<rect class="pvbackground" x="0.0" y="0" width="1200.0" height="400.0" fill="url(#background)"  />
+<g id="fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-frame" clip-path="url(#fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-image-frame)">
+<rect class="pvbackground" x="0.0" y="0" width="1200.0" height="415.0" fill="url(#background)"  />
 <text class="pvbackground" text-anchor="middle" x="600" y="24" font-size="17" font-family="Verdana" fill="rgb(0,0,0)"  >Profile results</text>
-<text text-anchor="left" x="10" y="383" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >Function:</text>
-<text text-anchor="" x="70" y="383" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="fig-dfc58789c77e4075b2bab32507efcdad-details" > </text>
-<g id="fig-dfc58789c77e4075b2bab32507efcdad-viewport" transform="scale(1)">
-<rect vector-effect="non-scaling-stroke" x="10.0" y="345.0" width="1175.8303886925796" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="#11 in task.jl:335" data-info="#11 in ./task.jl:335"/>
+<text text-anchor="left" x="10" y="398" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >Function:</text>
+<text text-anchor="" x="70" y="398" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-details" > </text>
+<g id="fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-viewport" transform="scale(1)">
+<rect vector-effect="non-scaling-stroke" x="10.0" y="360.0" width="1177.035175879397" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="#11 in task.jl:335" data-info="#11 in ./task.jl:335"/>
+<text text-anchor="" x="14.0" y="371.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="345.0" width="1177.035175879397" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="eventloop in eventloop.jl:8" data-info="eventloop in /Users/davidhiggins/.julia/v0.6/IJulia/src/eventloop.jl:8"/>
 <text text-anchor="" x="14.0" y="356.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="330.0" width="1175.8303886925796" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="eventloop in eventloop.jl:8" data-info="eventloop in /Users/davidhiggins/.julia/v0.6/IJulia/src/eventloop.jl:8"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="330.0" width="1177.035175879397" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="execute_request in execute_request.jl:160" data-info="execute_request in /Users/davidhiggins/.julia/v0.6/IJulia/src/execute_request.jl:160"/>
 <text text-anchor="" x="14.0" y="341.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="315.0" width="1175.8303886925796" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="execute_request in execute_request.jl:160" data-info="execute_request in /Users/davidhiggins/.julia/v0.6/IJulia/src/execute_request.jl:160"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="315.0" width="1177.035175879397" height="15.0" fill="rgb(255,0,0)" rx="2" ry="2" data-shortinfo="include_string in loading.jl:515" data-info="include_string in ./loading.jl:515"/>
 <text text-anchor="" x="14.0" y="326.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="300.0" width="1175.8303886925796" height="15.0" fill="rgb(255,0,0)" rx="2" ry="2" data-shortinfo="include_string in loading.jl:515" data-info="include_string in ./loading.jl:515"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="300.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_ext in inference.jl:2603" data-info="typeinf_ext in ./inference.jl:2603"/>
 <text text-anchor="" x="14.0" y="311.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="285.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_ext in inference.jl:2603" data-info="typeinf_ext in ./inference.jl:2603"/>
+<rect vector-effect="non-scaling-stroke" x="12.964824120603016" y="300.0" width="578.140703517588" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="macro expansion in profile.jl:23; anonymous in &amp;lt;missing&amp;gt;:-1" data-info="macro expansion in ./profile.jl:23; anonymous in ./&amp;lt;missing&amp;gt;:-1"/>
+<text text-anchor="" x="16.964824120603016" y="311.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="591.105527638191" y="300.0" width="592.964824120603" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="macro expansion in profile.jl:23; anonymous in &amp;lt;missing&amp;gt;:-1" data-info="macro expansion in ./profile.jl:23; anonymous in ./&amp;lt;missing&amp;gt;:-1"/>
+<text text-anchor="" x="595.105527638191" y="311.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="285.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_code in inference.jl:2564" data-info="typeinf_code in ./inference.jl:2564"/>
 <text text-anchor="" x="14.0" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="12.084805653710248" y="285.0" width="587.9151943462898" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="macro expansion in profile.jl:23; anonymous in &amp;lt;missing&amp;gt;:-1" data-info="macro expansion in ./profile.jl:23; anonymous in ./&amp;lt;missing&amp;gt;:-1"/>
-<text text-anchor="" x="16.084805653710248" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="600.0" y="285.0" width="583.7455830388694" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="macro expansion in profile.jl:23; anonymous in &amp;lt;missing&amp;gt;:-1" data-info="macro expansion in ./profile.jl:23; anonymous in ./&amp;lt;missing&amp;gt;:-1"/>
-<text text-anchor="" x="604.0" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="270.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_code in inference.jl:2564" data-info="typeinf_code in ./inference.jl:2564"/>
+<rect vector-effect="non-scaling-stroke" x="12.964824120603016" y="285.0" width="32.61306532663316" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:2" data-info="do_my_loop in ./In[41]:2"/>
+<text text-anchor="" x="16.964824120603016" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="45.57788944723618" y="285.0" width="77.0854271356784" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:2" data-info="do_my_loop in ./In[41]:2"/>
+<text text-anchor="" x="49.57788944723618" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="122.66331658291458" y="285.0" width="5.929648241206024" height="15.0" fill="rgb(205,185,255)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:3" data-info="do_my_loop in ./In[41]:3"/>
+<text text-anchor="" x="126.66331658291458" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="128.5929648241206" y="285.0" width="447.6884422110553" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:4" data-info="do_my_loop in ./In[41]:4"/>
+<text text-anchor="" x="132.5929648241206" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="576.2814070351759" y="285.0" width="2.964824120602998" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:4" data-info="do_my_loop in ./In[41]:4"/>
+<text text-anchor="" x="580.2814070351759" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="579.2462311557789" y="285.0" width="2.964824120602998" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:4" data-info="do_my_loop in ./In[41]:4"/>
+<text text-anchor="" x="583.2462311557789" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="582.2110552763819" y="285.0" width="8.894472361809107" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:4" data-info="do_my_loop in ./In[41]:4"/>
+<text text-anchor="" x="586.2110552763819" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="591.105527638191" y="285.0" width="26.683417085427095" height="15.0" fill="rgb(180,211,70)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:2" data-info="alternative_do_my_loop in ./In[44]:2"/>
+<text text-anchor="" x="595.105527638191" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="617.7889447236181" y="285.0" width="2.964824120602998" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:3" data-info="alternative_do_my_loop in ./In[44]:3"/>
+<text text-anchor="" x="621.7889447236181" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="620.7537688442211" y="285.0" width="5.92964824120611" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:4" data-info="alternative_do_my_loop in ./In[44]:4"/>
+<text text-anchor="" x="624.7537688442211" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="626.6834170854272" y="285.0" width="5.929648241205996" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:4" data-info="alternative_do_my_loop in ./In[44]:4"/>
+<text text-anchor="" x="630.6834170854272" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="632.6130653266332" y="285.0" width="109.6984924623116" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:4" data-info="alternative_do_my_loop in ./In[44]:4"/>
+<text text-anchor="" x="636.6130653266332" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="742.3115577889448" y="285.0" width="441.7587939698492" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:4" data-info="alternative_do_my_loop in ./In[44]:4"/>
+<text text-anchor="" x="746.3115577889448" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="270.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2494" data-info="typeinf_frame in ./inference.jl:2494"/>
 <text text-anchor="" x="14.0" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="12.084805653710248" y="270.0" width="29.187279151943464" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:2" data-info="do_my_loop in ./In[42]:2"/>
-<text text-anchor="" x="16.084805653710248" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="41.27208480565371" y="270.0" width="68.79858657243815" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:2" data-info="do_my_loop in ./In[42]:2"/>
-<text text-anchor="" x="45.27208480565371" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="110.07067137809187" y="270.0" width="6.254416961130744" height="15.0" fill="rgb(205,185,255)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:3" data-info="do_my_loop in ./In[42]:3"/>
-<text text-anchor="" x="114.07067137809187" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="116.32508833922262" y="270.0" width="2.084805653710248" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="120.32508833922262" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="118.40989399293287" y="270.0" width="6.254416961130744" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="122.40989399293287" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="124.66431095406361" y="270.0" width="456.57243816254424" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="128.6643109540636" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="581.2367491166078" y="270.0" width="14.593639575971679" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="585.2367491166078" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="595.8303886925795" y="270.0" width="4.169611307420496" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="599.8303886925795" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="600.0" y="270.0" width="22.932862190812784" height="15.0" fill="rgb(180,211,70)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:2" data-info="alternative_do_my_loop in ./In[45]:2"/>
-<text text-anchor="" x="604.0" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="622.9328621908128" y="270.0" width="6.254416961130687" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:3" data-info="alternative_do_my_loop in ./In[45]:3"/>
-<text text-anchor="" x="626.9328621908128" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="629.1872791519435" y="270.0" width="4.169611307420496" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:4" data-info="alternative_do_my_loop in ./In[45]:4"/>
-<text text-anchor="" x="633.1872791519435" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="633.356890459364" y="270.0" width="477.4204946996467" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:4" data-info="alternative_do_my_loop in ./In[45]:4"/>
-<text text-anchor="" x="637.356890459364" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="1110.7773851590107" y="270.0" width="6.254416961130801" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:4" data-info="alternative_do_my_loop in ./In[45]:4"/>
-<text text-anchor="" x="1114.7773851590107" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="1117.0318021201415" y="270.0" width="66.71378091872793" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:4" data-info="alternative_do_my_loop in ./In[45]:4"/>
-<text text-anchor="" x="1121.0318021201415" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="255.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2494" data-info="typeinf_frame in ./inference.jl:2494"/>
+<rect vector-effect="non-scaling-stroke" x="45.57788944723618" y="270.0" width="65.22613065326632" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="fill! in array.jl:227" data-info="fill! in ./array.jl:227"/>
+<text text-anchor="" x="49.57788944723618" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="110.80402010050251" y="270.0" width="5.9296482412060385" height="15.0" fill="rgb(26,162,255)" rx="2" ry="2" data-shortinfo="fill! in array.jl:228" data-info="fill! in ./array.jl:228"/>
+<text text-anchor="" x="114.80402010050251" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="116.73366834170855" y="270.0" width="5.929648241206024" height="15.0" fill="rgb(26,162,255)" rx="2" ry="2" data-shortinfo="fill! in array.jl:228" data-info="fill! in ./array.jl:228"/>
+<text text-anchor="" x="120.73366834170855" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="255.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_loop in inference.jl:2641" data-info="typeinf_loop in ./inference.jl:2641"/>
 <text text-anchor="" x="14.0" y="266.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="41.27208480565371" y="255.0" width="62.54416961130743" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="fill! in array.jl:227" data-info="fill! in ./array.jl:227"/>
-<text text-anchor="" x="45.27208480565371" y="266.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="103.81625441696114" y="255.0" width="6.25441696113073" height="15.0" fill="rgb(26,162,255)" rx="2" ry="2" data-shortinfo="fill! in array.jl:228" data-info="fill! in ./array.jl:228"/>
-<text text-anchor="" x="107.81625441696114" y="266.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="240.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_loop in inference.jl:2641" data-info="typeinf_loop in ./inference.jl:2641"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="240.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2725" data-info="typeinf_frame in ./inference.jl:2725"/>
 <text text-anchor="" x="14.0" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="225.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2725" data-info="typeinf_frame in ./inference.jl:2725"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="225.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_interpret in inference.jl:2069" data-info="abstract_interpret in ./inference.jl:2069"/>
 <text text-anchor="" x="14.0" y="236.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="210.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_interpret in inference.jl:2069" data-info="abstract_interpret in ./inference.jl:2069"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="210.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_eval in inference.jl:1935" data-info="abstract_eval in ./inference.jl:1935"/>
 <text text-anchor="" x="14.0" y="221.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="195.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_eval in inference.jl:1935" data-info="abstract_eval in ./inference.jl:1935"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="195.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_eval_call in inference.jl:1912" data-info="abstract_eval_call in ./inference.jl:1912"/>
 <text text-anchor="" x="14.0" y="206.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="180.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_eval_call in inference.jl:1912" data-info="abstract_eval_call in ./inference.jl:1912"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="180.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1882" data-info="abstract_call in ./inference.jl:1882"/>
 <text text-anchor="" x="14.0" y="191.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="165.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1882" data-info="abstract_call in ./inference.jl:1882"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="165.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_call_gf_by_type in inference.jl:1401" data-info="abstract_call_gf_by_type in ./inference.jl:1401"/>
 <text text-anchor="" x="14.0" y="176.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="150.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_call_gf_by_type in inference.jl:1401" data-info="abstract_call_gf_by_type in ./inference.jl:1401"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="150.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_edge in inference.jl:2517" data-info="typeinf_edge in ./inference.jl:2517"/>
 <text text-anchor="" x="14.0" y="161.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="135.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_edge in inference.jl:2517" data-info="typeinf_edge in ./inference.jl:2517"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="135.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2494" data-info="typeinf_frame in ./inference.jl:2494"/>
 <text text-anchor="" x="14.0" y="146.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="120.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2494" data-info="typeinf_frame in ./inference.jl:2494"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="120.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_loop in inference.jl:2624" data-info="typeinf_loop in ./inference.jl:2624"/>
 <text text-anchor="" x="14.0" y="131.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="105.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_loop in inference.jl:2624" data-info="typeinf_loop in ./inference.jl:2624"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="105.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2725" data-info="typeinf_frame in ./inference.jl:2725"/>
 <text text-anchor="" x="14.0" y="116.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="90.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2749" data-info="typeinf_frame in ./inference.jl:2749"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="90.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_interpret in inference.jl:2069" data-info="abstract_interpret in ./inference.jl:2069"/>
 <text text-anchor="" x="14.0" y="101.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="75.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_eval in inference.jl:1935" data-info="abstract_eval in ./inference.jl:1935"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="75.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_eval in inference.jl:1935" data-info="abstract_eval in ./inference.jl:1935"/>
 <text text-anchor="" x="14.0" y="86.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="60.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_eval_call in inference.jl:1912" data-info="abstract_eval_call in ./inference.jl:1912"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="60.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_eval_call in inference.jl:1912" data-info="abstract_eval_call in ./inference.jl:1912"/>
 <text text-anchor="" x="14.0" y="71.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="45.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1811" data-info="abstract_call in ./inference.jl:1811"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="45.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1674" data-info="abstract_call in ./inference.jl:1674"/>
 <text text-anchor="" x="14.0" y="56.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="30.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1681" data-info="abstract_call in ./inference.jl:1681"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="30.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="isvarargtype in essentials.jl:117" data-info="isvarargtype in ./essentials.jl:117"/>
 <text text-anchor="" x="14.0" y="41.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
     </g></g>
     <script><![CDATA[(function(N){var k=/[\.\/]/,L=/\s*,\s*/,C=function(a,d){return a-d},a,v,y={n:{}},M=function(){for(var a=0,d=this.length;a<d;a++)if("undefined"!=typeof this[a])return this[a]},A=function(){for(var a=this.length;--a;)if("undefined"!=typeof this[a])return this[a]},w=function(k,d){k=String(k);var f=v,n=Array.prototype.slice.call(arguments,2),u=w.listeners(k),p=0,b,q=[],e={},l=[],r=a;l.firstDefined=M;l.lastDefined=A;a=k;for(var s=v=0,x=u.length;s<x;s++)"zIndex"in u[s]&&(q.push(u[s].zIndex),0>u[s].zIndex&&
@@ -14305,17 +14336,17 @@ amount2:1-d})};a.filter.invert.toString=function(){return this()};a.filter.brigh
 
             var fig = {};
 
-            fig.viewport = Snap.select('#fig-dfc58789c77e4075b2bab32507efcdad-viewport');
-            fig.frame = Snap.select('#fig-dfc58789c77e4075b2bab32507efcdad-frame');
+            fig.viewport = Snap.select('#fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-viewport');
+            fig.frame = Snap.select('#fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-frame');
 
             fig.viewport_cx = fig.viewport.getBBox().cx;
 
-            fig.rects = Snap.selectAll('#fig-dfc58789c77e4075b2bab32507efcdad-viewport rect');
-            fig.texts = Snap.selectAll('#fig-dfc58789c77e4075b2bab32507efcdad-viewport text');
-            fig.clip = Snap.select('#fig-dfc58789c77e4075b2bab32507efcdad-clip-rect');
+            fig.rects = Snap.selectAll('#fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-viewport rect');
+            fig.texts = Snap.selectAll('#fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-viewport text');
+            fig.clip = Snap.select('#fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-clip-rect');
             fig.clip_width  = fig.clip.getBBox().w;
             fig.clip_middle = fig.clip.getBBox().cy;
-            fig.details = document.getElementById("fig-dfc58789c77e4075b2bab32507efcdad-details").firstChild; 
+            fig.details = document.getElementById("fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-details").firstChild; 
 
             fig.scale = 1.0;
             fig.shift = fig.viewport_cx;
@@ -14347,7 +14378,7 @@ amount2:1-d})};a.filter.invert.toString=function(){return this()};a.filter.brigh
                     fig.details.nodeValue = "";
                 });
             })
-            Snap.selectAll("#fig-dfc58789c77e4075b2bab32507efcdad-frame .pvbackground").forEach(function(bg){
+            Snap.selectAll("#fig-98c2bc4f9d904ff1ab0ea1734fbb0fee-frame .pvbackground").forEach(function(bg){
                bg.dblclick(function(e){
                    ProfileView.reset(fig);
                 });
@@ -14416,7 +14447,7 @@ amount2:1-d})};a.filter.invert.toString=function(){return this()};a.filter.brigh
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">Profile</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
@@ -14442,7 +14473,7 @@ amount2:1-d})};a.filter.invert.toString=function(){return this()};a.filter.brigh
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">ProfileView</span>
@@ -14459,110 +14490,112 @@ amount2:1-d})};a.filter.invert.toString=function(){return this()};a.filter.brigh
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[63]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[62]:</div>
 
 <div class="output_svg output_subarea output_execute_result">
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" >
+<svg version="1.1" width="1200" height="415" viewBox="0 0 1200 415" xmlns="http://www.w3.org/2000/svg" >
 <defs >
     <linearGradient id="background" y1="0" y2="1" x1="0" x2="0" >
         <stop stop-color="#eeeeee" offset="5%" />
         <stop stop-color="#eeeeb0" offset="95%" />
     </linearGradient>
-    <clipPath id="fig-9dd129dbd4484f47b42fa3d054f343f0-image-frame">
-      <rect id="fig-9dd129dbd4484f47b42fa3d054f343f0-clip-rect" x="0" y="0" width="1200" height="400" />
+    <clipPath id="fig-abb863bea5ba4442bcf0a380b6cc2e19-image-frame">
+      <rect id="fig-abb863bea5ba4442bcf0a380b6cc2e19-clip-rect" x="0" y="0" width="1200" height="415" />
     </clipPath>
 </defs>
 <style type="text/css">
     rect[rx]:hover { stroke:black; stroke-width:1; }
     text:hover { stroke:black; stroke-width:1; stroke-opacity:0.35; }
 </style>
-<g id="fig-9dd129dbd4484f47b42fa3d054f343f0-frame" clip-path="url(#fig-9dd129dbd4484f47b42fa3d054f343f0-image-frame)">
-<rect class="pvbackground" x="0.0" y="0" width="1200.0" height="400.0" fill="url(#background)"  />
+<g id="fig-abb863bea5ba4442bcf0a380b6cc2e19-frame" clip-path="url(#fig-abb863bea5ba4442bcf0a380b6cc2e19-image-frame)">
+<rect class="pvbackground" x="0.0" y="0" width="1200.0" height="415.0" fill="url(#background)"  />
 <text class="pvbackground" text-anchor="middle" x="600" y="24" font-size="17" font-family="Verdana" fill="rgb(0,0,0)"  >Profile results</text>
-<text text-anchor="left" x="10" y="383" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >Function:</text>
-<text text-anchor="" x="70" y="383" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="fig-9dd129dbd4484f47b42fa3d054f343f0-details" > </text>
-<g id="fig-9dd129dbd4484f47b42fa3d054f343f0-viewport" transform="scale(1)">
-<rect vector-effect="non-scaling-stroke" x="10.0" y="345.0" width="1175.8303886925796" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="#11 in task.jl:335" data-info="#11 in ./task.jl:335"/>
+<text text-anchor="left" x="10" y="398" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >Function:</text>
+<text text-anchor="" x="70" y="398" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="fig-abb863bea5ba4442bcf0a380b6cc2e19-details" > </text>
+<g id="fig-abb863bea5ba4442bcf0a380b6cc2e19-viewport" transform="scale(1)">
+<rect vector-effect="non-scaling-stroke" x="10.0" y="360.0" width="1177.035175879397" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="#11 in task.jl:335" data-info="#11 in ./task.jl:335"/>
+<text text-anchor="" x="14.0" y="371.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="345.0" width="1177.035175879397" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="eventloop in eventloop.jl:8" data-info="eventloop in /Users/davidhiggins/.julia/v0.6/IJulia/src/eventloop.jl:8"/>
 <text text-anchor="" x="14.0" y="356.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="330.0" width="1175.8303886925796" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="eventloop in eventloop.jl:8" data-info="eventloop in /Users/davidhiggins/.julia/v0.6/IJulia/src/eventloop.jl:8"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="330.0" width="1177.035175879397" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="execute_request in execute_request.jl:160" data-info="execute_request in /Users/davidhiggins/.julia/v0.6/IJulia/src/execute_request.jl:160"/>
 <text text-anchor="" x="14.0" y="341.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="315.0" width="1175.8303886925796" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="execute_request in execute_request.jl:160" data-info="execute_request in /Users/davidhiggins/.julia/v0.6/IJulia/src/execute_request.jl:160"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="315.0" width="1177.035175879397" height="15.0" fill="rgb(255,0,0)" rx="2" ry="2" data-shortinfo="include_string in loading.jl:515" data-info="include_string in ./loading.jl:515"/>
 <text text-anchor="" x="14.0" y="326.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="300.0" width="1175.8303886925796" height="15.0" fill="rgb(255,0,0)" rx="2" ry="2" data-shortinfo="include_string in loading.jl:515" data-info="include_string in ./loading.jl:515"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="300.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_ext in inference.jl:2603" data-info="typeinf_ext in ./inference.jl:2603"/>
 <text text-anchor="" x="14.0" y="311.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="285.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_ext in inference.jl:2603" data-info="typeinf_ext in ./inference.jl:2603"/>
+<rect vector-effect="non-scaling-stroke" x="12.964824120603016" y="300.0" width="578.140703517588" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="macro expansion in profile.jl:23; anonymous in &amp;lt;missing&amp;gt;:-1" data-info="macro expansion in ./profile.jl:23; anonymous in ./&amp;lt;missing&amp;gt;:-1"/>
+<text text-anchor="" x="16.964824120603016" y="311.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="591.105527638191" y="300.0" width="592.964824120603" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="macro expansion in profile.jl:23; anonymous in &amp;lt;missing&amp;gt;:-1" data-info="macro expansion in ./profile.jl:23; anonymous in ./&amp;lt;missing&amp;gt;:-1"/>
+<text text-anchor="" x="595.105527638191" y="311.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="285.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_code in inference.jl:2564" data-info="typeinf_code in ./inference.jl:2564"/>
 <text text-anchor="" x="14.0" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="12.084805653710248" y="285.0" width="587.9151943462898" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="macro expansion in profile.jl:23; anonymous in &amp;lt;missing&amp;gt;:-1" data-info="macro expansion in ./profile.jl:23; anonymous in ./&amp;lt;missing&amp;gt;:-1"/>
-<text text-anchor="" x="16.084805653710248" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="600.0" y="285.0" width="583.7455830388694" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="macro expansion in profile.jl:23; anonymous in &amp;lt;missing&amp;gt;:-1" data-info="macro expansion in ./profile.jl:23; anonymous in ./&amp;lt;missing&amp;gt;:-1"/>
-<text text-anchor="" x="604.0" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="270.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_code in inference.jl:2564" data-info="typeinf_code in ./inference.jl:2564"/>
+<rect vector-effect="non-scaling-stroke" x="12.964824120603016" y="285.0" width="32.61306532663316" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:2" data-info="do_my_loop in ./In[41]:2"/>
+<text text-anchor="" x="16.964824120603016" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="45.57788944723618" y="285.0" width="77.0854271356784" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:2" data-info="do_my_loop in ./In[41]:2"/>
+<text text-anchor="" x="49.57788944723618" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="122.66331658291458" y="285.0" width="5.929648241206024" height="15.0" fill="rgb(205,185,255)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:3" data-info="do_my_loop in ./In[41]:3"/>
+<text text-anchor="" x="126.66331658291458" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="128.5929648241206" y="285.0" width="447.6884422110553" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:4" data-info="do_my_loop in ./In[41]:4"/>
+<text text-anchor="" x="132.5929648241206" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="576.2814070351759" y="285.0" width="2.964824120602998" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:4" data-info="do_my_loop in ./In[41]:4"/>
+<text text-anchor="" x="580.2814070351759" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="579.2462311557789" y="285.0" width="2.964824120602998" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:4" data-info="do_my_loop in ./In[41]:4"/>
+<text text-anchor="" x="583.2462311557789" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="582.2110552763819" y="285.0" width="8.894472361809107" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[41]:4" data-info="do_my_loop in ./In[41]:4"/>
+<text text-anchor="" x="586.2110552763819" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="591.105527638191" y="285.0" width="26.683417085427095" height="15.0" fill="rgb(180,211,70)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:2" data-info="alternative_do_my_loop in ./In[44]:2"/>
+<text text-anchor="" x="595.105527638191" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="617.7889447236181" y="285.0" width="2.964824120602998" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:3" data-info="alternative_do_my_loop in ./In[44]:3"/>
+<text text-anchor="" x="621.7889447236181" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="620.7537688442211" y="285.0" width="5.92964824120611" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:4" data-info="alternative_do_my_loop in ./In[44]:4"/>
+<text text-anchor="" x="624.7537688442211" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="626.6834170854272" y="285.0" width="5.929648241205996" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:4" data-info="alternative_do_my_loop in ./In[44]:4"/>
+<text text-anchor="" x="630.6834170854272" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="632.6130653266332" y="285.0" width="109.6984924623116" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:4" data-info="alternative_do_my_loop in ./In[44]:4"/>
+<text text-anchor="" x="636.6130653266332" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="742.3115577889448" y="285.0" width="441.7587939698492" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[44]:4" data-info="alternative_do_my_loop in ./In[44]:4"/>
+<text text-anchor="" x="746.3115577889448" y="296.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="270.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2494" data-info="typeinf_frame in ./inference.jl:2494"/>
 <text text-anchor="" x="14.0" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="12.084805653710248" y="270.0" width="29.187279151943464" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:2" data-info="do_my_loop in ./In[42]:2"/>
-<text text-anchor="" x="16.084805653710248" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="41.27208480565371" y="270.0" width="68.79858657243815" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:2" data-info="do_my_loop in ./In[42]:2"/>
-<text text-anchor="" x="45.27208480565371" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="110.07067137809187" y="270.0" width="6.254416961130744" height="15.0" fill="rgb(205,185,255)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:3" data-info="do_my_loop in ./In[42]:3"/>
-<text text-anchor="" x="114.07067137809187" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="116.32508833922262" y="270.0" width="2.084805653710248" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="120.32508833922262" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="118.40989399293287" y="270.0" width="6.254416961130744" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="122.40989399293287" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="124.66431095406361" y="270.0" width="456.57243816254424" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="128.6643109540636" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="581.2367491166078" y="270.0" width="14.593639575971679" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="585.2367491166078" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="595.8303886925795" y="270.0" width="4.169611307420496" height="15.0" fill="rgb(255,141,62)" rx="2" ry="2" data-shortinfo="do_my_loop in In[42]:4" data-info="do_my_loop in ./In[42]:4"/>
-<text text-anchor="" x="599.8303886925795" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="600.0" y="270.0" width="22.932862190812784" height="15.0" fill="rgb(180,211,70)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:2" data-info="alternative_do_my_loop in ./In[45]:2"/>
-<text text-anchor="" x="604.0" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="622.9328621908128" y="270.0" width="6.254416961130687" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:3" data-info="alternative_do_my_loop in ./In[45]:3"/>
-<text text-anchor="" x="626.9328621908128" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="629.1872791519435" y="270.0" width="4.169611307420496" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:4" data-info="alternative_do_my_loop in ./In[45]:4"/>
-<text text-anchor="" x="633.1872791519435" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="633.356890459364" y="270.0" width="477.4204946996467" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:4" data-info="alternative_do_my_loop in ./In[45]:4"/>
-<text text-anchor="" x="637.356890459364" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="1110.7773851590107" y="270.0" width="6.254416961130801" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:4" data-info="alternative_do_my_loop in ./In[45]:4"/>
-<text text-anchor="" x="1114.7773851590107" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="1117.0318021201415" y="270.0" width="66.71378091872793" height="15.0" fill="rgb(158,158,158)" rx="2" ry="2" data-shortinfo="alternative_do_my_loop in In[45]:4" data-info="alternative_do_my_loop in ./In[45]:4"/>
-<text text-anchor="" x="1121.0318021201415" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="255.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2494" data-info="typeinf_frame in ./inference.jl:2494"/>
+<rect vector-effect="non-scaling-stroke" x="45.57788944723618" y="270.0" width="65.22613065326632" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="fill! in array.jl:227" data-info="fill! in ./array.jl:227"/>
+<text text-anchor="" x="49.57788944723618" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="110.80402010050251" y="270.0" width="5.9296482412060385" height="15.0" fill="rgb(26,162,255)" rx="2" ry="2" data-shortinfo="fill! in array.jl:228" data-info="fill! in ./array.jl:228"/>
+<text text-anchor="" x="114.80402010050251" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="116.73366834170855" y="270.0" width="5.929648241206024" height="15.0" fill="rgb(26,162,255)" rx="2" ry="2" data-shortinfo="fill! in array.jl:228" data-info="fill! in ./array.jl:228"/>
+<text text-anchor="" x="120.73366834170855" y="281.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="255.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_loop in inference.jl:2641" data-info="typeinf_loop in ./inference.jl:2641"/>
 <text text-anchor="" x="14.0" y="266.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="41.27208480565371" y="255.0" width="62.54416961130743" height="15.0" fill="rgb(50,180,78)" rx="2" ry="2" data-shortinfo="fill! in array.jl:227" data-info="fill! in ./array.jl:227"/>
-<text text-anchor="" x="45.27208480565371" y="266.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="103.81625441696114" y="255.0" width="6.25441696113073" height="15.0" fill="rgb(26,162,255)" rx="2" ry="2" data-shortinfo="fill! in array.jl:228" data-info="fill! in ./array.jl:228"/>
-<text text-anchor="" x="107.81625441696114" y="266.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="240.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_loop in inference.jl:2641" data-info="typeinf_loop in ./inference.jl:2641"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="240.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2725" data-info="typeinf_frame in ./inference.jl:2725"/>
 <text text-anchor="" x="14.0" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="225.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2725" data-info="typeinf_frame in ./inference.jl:2725"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="225.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_interpret in inference.jl:2069" data-info="abstract_interpret in ./inference.jl:2069"/>
 <text text-anchor="" x="14.0" y="236.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="210.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_interpret in inference.jl:2069" data-info="abstract_interpret in ./inference.jl:2069"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="210.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_eval in inference.jl:1935" data-info="abstract_eval in ./inference.jl:1935"/>
 <text text-anchor="" x="14.0" y="221.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="195.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_eval in inference.jl:1935" data-info="abstract_eval in ./inference.jl:1935"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="195.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_eval_call in inference.jl:1912" data-info="abstract_eval_call in ./inference.jl:1912"/>
 <text text-anchor="" x="14.0" y="206.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="180.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_eval_call in inference.jl:1912" data-info="abstract_eval_call in ./inference.jl:1912"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="180.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1882" data-info="abstract_call in ./inference.jl:1882"/>
 <text text-anchor="" x="14.0" y="191.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="165.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1882" data-info="abstract_call in ./inference.jl:1882"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="165.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_call_gf_by_type in inference.jl:1401" data-info="abstract_call_gf_by_type in ./inference.jl:1401"/>
 <text text-anchor="" x="14.0" y="176.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="150.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_call_gf_by_type in inference.jl:1401" data-info="abstract_call_gf_by_type in ./inference.jl:1401"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="150.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_edge in inference.jl:2517" data-info="typeinf_edge in ./inference.jl:2517"/>
 <text text-anchor="" x="14.0" y="161.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="135.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_edge in inference.jl:2517" data-info="typeinf_edge in ./inference.jl:2517"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="135.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2494" data-info="typeinf_frame in ./inference.jl:2494"/>
 <text text-anchor="" x="14.0" y="146.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="120.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2494" data-info="typeinf_frame in ./inference.jl:2494"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="120.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_loop in inference.jl:2624" data-info="typeinf_loop in ./inference.jl:2624"/>
 <text text-anchor="" x="14.0" y="131.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="105.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="typeinf_loop in inference.jl:2624" data-info="typeinf_loop in ./inference.jl:2624"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="105.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2725" data-info="typeinf_frame in ./inference.jl:2725"/>
 <text text-anchor="" x="14.0" y="116.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="90.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="typeinf_frame in inference.jl:2749" data-info="typeinf_frame in ./inference.jl:2749"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="90.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_interpret in inference.jl:2069" data-info="abstract_interpret in ./inference.jl:2069"/>
 <text text-anchor="" x="14.0" y="101.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="75.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_eval in inference.jl:1935" data-info="abstract_eval in ./inference.jl:1935"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="75.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_eval in inference.jl:1935" data-info="abstract_eval in ./inference.jl:1935"/>
 <text text-anchor="" x="14.0" y="86.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="60.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_eval_call in inference.jl:1912" data-info="abstract_eval_call in ./inference.jl:1912"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="60.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_eval_call in inference.jl:1912" data-info="abstract_eval_call in ./inference.jl:1912"/>
 <text text-anchor="" x="14.0" y="71.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="45.0" width="2.084805653710248" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1811" data-info="abstract_call in ./inference.jl:1811"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="45.0" width="2.9648241206030157" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1674" data-info="abstract_call in ./inference.jl:1674"/>
 <text text-anchor="" x="14.0" y="56.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
-<rect vector-effect="non-scaling-stroke" x="10.0" y="30.0" width="2.084805653710248" height="15.0" fill="rgb(255,164,156)" rx="2" ry="2" data-shortinfo="abstract_call in inference.jl:1681" data-info="abstract_call in ./inference.jl:1681"/>
+<rect vector-effect="non-scaling-stroke" x="10.0" y="30.0" width="2.9648241206030157" height="15.0" fill="rgb(232,112,221)" rx="2" ry="2" data-shortinfo="isvarargtype in essentials.jl:117" data-info="isvarargtype in ./essentials.jl:117"/>
 <text text-anchor="" x="14.0" y="41.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" ></text>
     </g></g>
     <script><![CDATA[(function(N){var k=/[\.\/]/,L=/\s*,\s*/,C=function(a,d){return a-d},a,v,y={n:{}},M=function(){for(var a=0,d=this.length;a<d;a++)if("undefined"!=typeof this[a])return this[a]},A=function(){for(var a=this.length;--a;)if("undefined"!=typeof this[a])return this[a]},w=function(k,d){k=String(k);var f=v,n=Array.prototype.slice.call(arguments,2),u=w.listeners(k),p=0,b,q=[],e={},l=[],r=a;l.firstDefined=M;l.lastDefined=A;a=k;for(var s=v=0,x=u.length;s<x;s++)"zIndex"in u[s]&&(q.push(u[s].zIndex),0>u[s].zIndex&&
@@ -14834,17 +14867,17 @@ amount2:1-d})};a.filter.invert.toString=function(){return this()};a.filter.brigh
 
             var fig = {};
 
-            fig.viewport = Snap.select('#fig-9dd129dbd4484f47b42fa3d054f343f0-viewport');
-            fig.frame = Snap.select('#fig-9dd129dbd4484f47b42fa3d054f343f0-frame');
+            fig.viewport = Snap.select('#fig-abb863bea5ba4442bcf0a380b6cc2e19-viewport');
+            fig.frame = Snap.select('#fig-abb863bea5ba4442bcf0a380b6cc2e19-frame');
 
             fig.viewport_cx = fig.viewport.getBBox().cx;
 
-            fig.rects = Snap.selectAll('#fig-9dd129dbd4484f47b42fa3d054f343f0-viewport rect');
-            fig.texts = Snap.selectAll('#fig-9dd129dbd4484f47b42fa3d054f343f0-viewport text');
-            fig.clip = Snap.select('#fig-9dd129dbd4484f47b42fa3d054f343f0-clip-rect');
+            fig.rects = Snap.selectAll('#fig-abb863bea5ba4442bcf0a380b6cc2e19-viewport rect');
+            fig.texts = Snap.selectAll('#fig-abb863bea5ba4442bcf0a380b6cc2e19-viewport text');
+            fig.clip = Snap.select('#fig-abb863bea5ba4442bcf0a380b6cc2e19-clip-rect');
             fig.clip_width  = fig.clip.getBBox().w;
             fig.clip_middle = fig.clip.getBBox().cy;
-            fig.details = document.getElementById("fig-9dd129dbd4484f47b42fa3d054f343f0-details").firstChild; 
+            fig.details = document.getElementById("fig-abb863bea5ba4442bcf0a380b6cc2e19-details").firstChild; 
 
             fig.scale = 1.0;
             fig.shift = fig.viewport_cx;
@@ -14876,7 +14909,7 @@ amount2:1-d})};a.filter.invert.toString=function(){return this()};a.filter.brigh
                     fig.details.nodeValue = "";
                 });
             })
-            Snap.selectAll("#fig-9dd129dbd4484f47b42fa3d054f343f0-frame .pvbackground").forEach(function(bg){
+            Snap.selectAll("#fig-abb863bea5ba4442bcf0a380b6cc2e19-frame .pvbackground").forEach(function(bg){
                bg.dblclick(function(e){
                    ProfileView.reset(fig);
                 });
@@ -14977,7 +15010,7 @@ amount2:1-d})};a.filter.invert.toString=function(){return this()};a.filter.brigh
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Gallium</span>
@@ -14987,72 +15020,10 @@ amount2:1-d})};a.filter.invert.toString=function(){return this()};a.filter.brigh
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-WARNING: deprecated syntax &#34;local declfile=&#34;&#34;, declline=0&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:455.
-Use &#34;local declfile, declline = &#34;&#34;, 0&#34; instead.
-
-WARNING: deprecated syntax &#34;local dbgs=nothing, cu=nothing, sp=nothing&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:466.
-Use &#34;local dbgs, cu, sp = nothing, nothing, nothing&#34; instead.
-
-WARNING: deprecated syntax &#34;abstract LocationSource&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:690.
-Use &#34;abstract type LocationSource end&#34; instead.
-<span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">Precompiling module Gallium.
-</span>
-WARNING: deprecated syntax &#34;local declfile=&#34;&#34;, declline=0&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:455.
-Use &#34;local declfile, declline = &#34;&#34;, 0&#34; instead.
-
-WARNING: deprecated syntax &#34;local dbgs=nothing, cu=nothing, sp=nothing&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:466.
-Use &#34;local dbgs, cu, sp = nothing, nothing, nothing&#34; instead.
-
-WARNING: deprecated syntax &#34;abstract LocationSource&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:690.
-Use &#34;abstract type LocationSource end&#34; instead.
-
-WARNING: deprecated syntax &#34;abstract ReplacementLoc&#34; at /Users/davidhiggins/.julia/v0.6/ASTInterpreter/src/ASTInterpreter.jl:155.
-Use &#34;abstract type ReplacementLoc end&#34; instead.
-<span class="ansi-red-intense-fg ansi-bold">ERROR: </span>LoadError: <span class="ansi-red-intense-fg">syntax: extra token &#34;.¬&#34; after end of expression</span>
-Stacktrace:
- [1] <span class="ansi-bold">include_from_node1</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:569</span>
- [2] <span class="ansi-bold">include</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./sysimg.jl:14</span>
- [3] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:2</span>
-while loading /Users/davidhiggins/.julia/v0.6/ASTInterpreter/src/ASTInterpreter.jl, in expression starting on line 914
-<span class="ansi-red-intense-fg ansi-bold">ERROR: </span>LoadError: <span class="ansi-red-intense-fg">Failed to precompile ASTInterpreter to /Users/davidhiggins/.julia/lib/v0.6/ASTInterpreter.ji.</span>
-Stacktrace:
- [1] <span class="ansi-bold">compilecache</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:703</span>
- [2] <span class="ansi-bold">_require</span><span class="ansi-bold">(</span>::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:456</span>
- [3] <span class="ansi-bold">require</span><span class="ansi-bold">(</span>::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:398</span>
- [4] <span class="ansi-bold">include_from_node1</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:569</span>
- [5] <span class="ansi-bold">include</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./sysimg.jl:14</span>
- [6] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:2</span>
-while loading /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl, in expression starting on line 3
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg">Failed to precompile Gallium to /Users/davidhiggins/.julia/lib/v0.6/Gallium.ji.</span>
-
-Stacktrace:
- [1] <span class="ansi-bold">compilecache</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:703</span>
- [2] <span class="ansi-bold">_require</span><span class="ansi-bold">(</span>::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:490</span>
- [3] <span class="ansi-bold">require</span><span class="ansi-bold">(</span>::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:398</span></pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> my_func_2</span><span class="p">(</span><span class="n">var</span><span class="p">::</span><span class="kt">Int</span><span class="p">)</span>
@@ -15085,28 +15056,13 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">my_func_1</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>in my_func_1()
-in my_func_2() the value of var is 2
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -15123,28 +15079,13 @@ in my_func_2() the value of var is 2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">breakpoint</span><span class="p">(</span><span class="n">my_func_1</span><span class="p">,</span> <span class="p">(</span><span class="kt">Int64</span><span class="p">,))</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg">UndefVarError: breakpoint not defined</span>
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -15161,7 +15102,7 @@ in my_func_2() the value of var is 2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">my_small_int</span> <span class="o">=</span> <span class="kt">Int32</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -15171,26 +15112,10 @@ in my_func_2() the value of var is 2
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[68]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="nb">typeof</span><span class="p">(</span><span class="n">my_small_int</span><span class="p">)</span>
@@ -15200,26 +15125,10 @@ in my_func_2() the value of var is 2
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[69]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Int32</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">my_bigger_int</span> <span class="o">=</span> <span class="kt">Int64</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -15229,26 +15138,10 @@ in my_func_2() the value of var is 2
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[70]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="nb">typeof</span><span class="p">(</span><span class="n">my_bigger_int</span><span class="p">)</span>
@@ -15258,46 +15151,16 @@ in my_func_2() the value of var is 2
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[71]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Int64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">my_func_1</span><span class="p">(</span><span class="n">my_small_int</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>in my_func_1()
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -15314,7 +15177,7 @@ in my_func_2() the value of var is 2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Gallium</span><span class="o">.</span><span class="n">list_breakpoints</span><span class="p">()</span>
@@ -15324,25 +15187,10 @@ in my_func_2() the value of var is 2
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg">UndefVarError: Gallium not defined</span>
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Gallium</span><span class="o">.</span><span class="n">breakpoint_on_error</span><span class="p">()</span>
@@ -15352,46 +15200,16 @@ in my_func_2() the value of var is 2
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg">UndefVarError: Gallium not defined</span>
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[75]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">my_func_1</span><span class="p">(</span><span class="n">my_bigger_int</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>in my_func_1()
-in my_func_2() the value of var is 3
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -15430,7 +15248,7 @@ in my_func_2() the value of var is 3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Gallium</span>
@@ -15456,68 +15274,6 @@ in my_func_2() the value of var is 3
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-WARNING: deprecated syntax &#34;local declfile=&#34;&#34;, declline=0&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:455.
-Use &#34;local declfile, declline = &#34;&#34;, 0&#34; instead.
-
-WARNING: deprecated syntax &#34;local dbgs=nothing, cu=nothing, sp=nothing&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:466.
-Use &#34;local dbgs, cu, sp = nothing, nothing, nothing&#34; instead.
-
-WARNING: deprecated syntax &#34;abstract LocationSource&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:690.
-Use &#34;abstract type LocationSource end&#34; instead.
-<span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">Precompiling module Gallium.
-</span>
-WARNING: deprecated syntax &#34;local declfile=&#34;&#34;, declline=0&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:455.
-Use &#34;local declfile, declline = &#34;&#34;, 0&#34; instead.
-
-WARNING: deprecated syntax &#34;local dbgs=nothing, cu=nothing, sp=nothing&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:466.
-Use &#34;local dbgs, cu, sp = nothing, nothing, nothing&#34; instead.
-
-WARNING: deprecated syntax &#34;abstract LocationSource&#34; at /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl:690.
-Use &#34;abstract type LocationSource end&#34; instead.
-
-WARNING: deprecated syntax &#34;abstract ReplacementLoc&#34; at /Users/davidhiggins/.julia/v0.6/ASTInterpreter/src/ASTInterpreter.jl:155.
-Use &#34;abstract type ReplacementLoc end&#34; instead.
-<span class="ansi-red-intense-fg ansi-bold">ERROR: </span>LoadError: <span class="ansi-red-intense-fg">syntax: extra token &#34;.¬&#34; after end of expression</span>
-Stacktrace:
- [1] <span class="ansi-bold">include_from_node1</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:569</span>
- [2] <span class="ansi-bold">include</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./sysimg.jl:14</span>
- [3] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:2</span>
-while loading /Users/davidhiggins/.julia/v0.6/ASTInterpreter/src/ASTInterpreter.jl, in expression starting on line 914
-<span class="ansi-red-intense-fg ansi-bold">ERROR: </span>LoadError: <span class="ansi-red-intense-fg">Failed to precompile ASTInterpreter to /Users/davidhiggins/.julia/lib/v0.6/ASTInterpreter.ji.</span>
-Stacktrace:
- [1] <span class="ansi-bold">compilecache</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:703</span>
- [2] <span class="ansi-bold">_require</span><span class="ansi-bold">(</span>::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:456</span>
- [3] <span class="ansi-bold">require</span><span class="ansi-bold">(</span>::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:398</span>
- [4] <span class="ansi-bold">include_from_node1</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:569</span>
- [5] <span class="ansi-bold">include</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./sysimg.jl:14</span>
- [6] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:2</span>
-while loading /Users/davidhiggins/.julia/v0.6/Gallium/src/Gallium.jl, in expression starting on line 3
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg">Failed to precompile Gallium to /Users/davidhiggins/.julia/lib/v0.6/Gallium.ji.</span>
-
-Stacktrace:
- [1] <span class="ansi-bold">compilecache</span><span class="ansi-bold">(</span>::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:703</span>
- [2] <span class="ansi-bold">_require</span><span class="ansi-bold">(</span>::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:490</span>
- [3] <span class="ansi-bold">require</span><span class="ansi-bold">(</span>::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:398</span></pre>
-</div>
-</div>
-
 </div>
 </div>
 
