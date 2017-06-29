@@ -11588,8 +11588,10 @@ ul.typeahead-list > li > a {
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -11758,7 +11760,39 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>This is going to be a bird's eye view of some of the advanced topics in Julia, particularly focusing on issues of speed and performance.</p>
+<p>Julia is built with a number of components which enable it to obtain massive performance, despite its scripted nature.
+You've already seen</p>
+<ul>
+<li>multiple dispatch</li>
+<li>types, when necessary</li>
+</ul>
+<p>We are skipping the built-in parallelism. This is for the very good reason that, even though it's designed-in from the outset of the language the syntax is currently being stabilised and should be final from the next release (<em>the disadvantage of being an early adopter</em>).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Calling-a-C-function-natively">Calling a C function natively<a class="anchor-link" href="#Calling-a-C-function-natively">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can call <strong>C</strong> and <strong>Fortran</strong> functions natively. That means that you can potentially have an ultra high-performance library, which has been worked on for years, and you get to access its functions directly from Julia at <strong>0</strong> computational overhead.</p>
+<blockquote><p>ccall((:function_name, "library_name"), return_type, (argument_types), argument_values)</p>
+</blockquote>
+<p>Current requirements: the library must be <em>dynamically</em> linkable (not static).</p>
+<p>Note that, getting the function call syntax correct is typically the biggest stumbling block to working with C and Fortran libraries from Julia. In addition, you don't have the benefit of interfacing via header files so the handling of returned values can be tricky if they're not what you were expecting.</p>
+<p>Also, for Fortran users, you should note that Fortran compilers often change the case of a function call. From Julia you need to call the <em>compiled</em> version of the function call, not the original source code spelling.</p>
+
 </div>
 </div>
 </div>
@@ -11767,13 +11801,114 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre>
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">show</span> <span class="k">ccall</span><span class="p">((:</span><span class="n">clock</span><span class="p">,),</span><span class="kt">Int64</span><span class="p">,())</span>
+<span class="p">@</span><span class="n">show</span> <span class="k">ccall</span><span class="p">((:</span><span class="n">clock</span><span class="p">,),</span><span class="kt">Int64</span><span class="p">,())</span>
+<span class="p">@</span><span class="n">show</span> <span class="k">ccall</span><span class="p">((:</span><span class="n">clock</span><span class="p">,),</span><span class="kt">Int64</span><span class="p">,())</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">show</span> <span class="k">ccall</span><span class="p">((:</span><span class="n">rand</span><span class="p">,),</span> <span class="kt">Int64</span><span class="p">,</span> <span class="p">())</span>
+<span class="p">@</span><span class="n">show</span> <span class="k">ccall</span><span class="p">((:</span><span class="n">rand</span><span class="p">,),</span> <span class="kt">Int64</span><span class="p">,</span> <span class="p">())</span>
+<span class="p">@</span><span class="n">show</span> <span class="k">ccall</span><span class="p">((:</span><span class="n">rand</span><span class="p">,),</span> <span class="kt">Int64</span><span class="p">,</span> <span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">ccall</span><span class="p">((:</span><span class="n">printf</span><span class="p">,),</span> <span class="kt">Int64</span><span class="p">,</span> <span class="p">(</span><span class="n">Cstring</span><span class="p">,),</span> <span class="s">&quot;blah&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">ccall</span><span class="p">((:</span><span class="n">printf</span><span class="p">,),</span> <span class="kt">Int64</span><span class="p">,</span> <span class="p">(</span><span class="n">Cstring</span><span class="p">,</span><span class="kt">Int64</span><span class="p">),</span> <span class="s">&quot;blah </span><span class="si">%d</span><span class="s"> </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">999</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> getenv</span><span class="p">(</span><span class="n">var</span><span class="p">::</span><span class="n">AbstractString</span><span class="p">)</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="k">ccall</span><span class="p">((:</span><span class="n">getenv</span><span class="p">,</span> <span class="s">&quot;libc&quot;</span><span class="p">),</span>
+                <span class="n">Cstring</span><span class="p">,</span> <span class="p">(</span><span class="n">Cstring</span><span class="p">,),</span> <span class="n">var</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="n">C_NULL</span>
+        <span class="nb">error</span><span class="p">(</span><span class="s">&quot;getenv: undefined variable: &quot;</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">unsafe_string</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;PATH&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;THIS_value_DOESNT_exist&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In practice, you may never need to use this functionality depending on your position on the power-user spectrum.</p>
+<p>But even if you're not using it directly, under the hood this is how many of the Packages are interfacing with numerical libraries which have been developed and optimised in C and Fortran since the 70's.</p>
+<p><a href="https://docs.julialang.org/en/stable/manual/calling-c-and-fortran-code/">https://docs.julialang.org/en/stable/manual/calling-c-and-fortran-code/</a></p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -11784,12 +11919,43 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I use OpenCL extensively in my work. You may be familiar with CUDA. There is also a CUDAnative package for Julia. The principles I'm going to present are similar for both interfaces.</p>
+<p>OpenCL will work out of the box for Mac users. For Windows and Linux users it typically requires some external packages be installed. This is not a workshop on OpenCL, so we'll provide a notebook with the calculated outputs which you can follow, but please note when installing OpenCL that you need a <strong>driver</strong> or a <strong>library</strong> which provides OpenCL support directly for your system and not just the <strong>header</strong> files. (apt-get install opencl typically only grabs the headers)</p>
+<p>If you want to install OpenCL (after the workshop) there are a number of options:</p>
+<ol>
+<li>If you have an NVIDIA GPU then you automatically have OpenCL installed if you install CUDA development system. Note that the NVIDIA implementation can only compile OpenCL for the GPU device.</li>
+<li>You can install ATIs APP SDK, which is natively OpenCL, for ATI GPU devices. <em>This system can also compile for CPU giving you the best of both worlds!</em></li>
+<li>Intel provide OpenCL compilers for CPUs.</li>
+<li>Apple pre-install OpenCL support on their computers, for both CPU and GPU.</li>
+</ol>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;OpenCL&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">OpenCL</span>
 </pre></div>
 
 </div>
@@ -11802,7 +11968,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Benchmarking,-Timing,-Profiling">Benchmarking, Timing, Profiling<a class="anchor-link" href="#Benchmarking,-Timing,-Profiling">&#182;</a></h2>
+<p>The writers of the OpenCL package have made extensive use of the ccall( ) approach to directly interface with OpenCL (which is typically accessed from C).</p>
+<p>Here I will present a few wrapper functions, which I have written, which most OpenCL developers typically need to write themselves when they begin using the langauge.</p>
+
 </div>
 </div>
 </div>
@@ -11811,7 +11979,99 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="p">@</span><span class="n">time</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> print_cl_stuff</span><span class="p">()</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Number of Platforms: &quot;</span><span class="p">,</span> <span class="n">cl</span><span class="o">.</span><span class="n">num_platforms</span><span class="p">(),</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">plat</span> <span class="k">in</span> <span class="n">cl</span><span class="o">.</span><span class="n">num_platforms</span><span class="p">()</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Platform[&quot;</span><span class="p">,</span> <span class="n">plat</span><span class="p">,</span> <span class="s">&quot;]: &quot;</span><span class="p">,</span> <span class="n">cl</span><span class="o">.</span><span class="n">platforms</span><span class="p">()[</span><span class="n">plat</span><span class="p">],</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="c">#print(&quot;Platforms: &quot;, cl.platforms())</span>
+        <span class="n">numdevices</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">cl</span><span class="o">.</span><span class="n">devices</span><span class="p">())</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Number of Devices: &quot;</span><span class="p">,</span> <span class="n">numdevices</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">dev</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">numdevices</span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Device[&quot;</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="s">&quot;]: &quot;</span><span class="p">,</span> <span class="n">cl</span><span class="o">.</span><span class="n">devices</span><span class="p">()[</span><span class="n">dev</span><span class="p">],</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="c">#print(&quot;\nDevices: &quot;, cl.devices(), &quot;\n&quot;)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we're making use of the following functions.</p>
+<blockquote><p>cl.num_platforms( )</p>
+<p>cl.platforms( )[index]</p>
+<p>cl.devices( )</p>
+<p>cl.devices( )[index]</p>
+</blockquote>
+<p>These are <strong>very</strong> lightly wrapped versions of the C functions which are part of the OpenCL API.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">print_cl_stuff</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In OpenCL you may have multiple platforms installed on your system (these are the different implementations mentioned in the install notes above).</p>
+<p>When you're setting up a computation, you need to choose:</p>
+<ul>
+<li>platform</li>
+<li>device</li>
+</ul>
+<p>and create a memory (plus device)</p>
+<ul>
+<li>context</li>
+</ul>
+<p>This latter is basically the namespace within which your computation will operate.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> set_device</span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span> <span class="n">platform</span><span class="p">)</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">devices</span><span class="p">()[</span><span class="n">device_id</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">device</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="nf"> set_device</span><span class="p">(</span><span class="n">device_id</span><span class="p">)</span>
+    <span class="n">platform</span> <span class="o">=</span> <span class="n">set_platform</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">set_device</span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span> <span class="n">platform</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="nf"> set_context</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Context</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ctx</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="nf"> set_platform</span><span class="p">(</span><span class="n">platform_id</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">platform</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Platform</span><span class="p">(</span><span class="n">platform_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">platform</span>
+<span class="k">end</span><span class="p">;</span>
 </pre></div>
 
 </div>
@@ -11824,15 +12084,1093 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="k">using</span> <span class="n">BenchmarkTools</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
-<span class="p">@</span><span class="n">benchmark</span> <span class="n">max</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">our_platform</span> <span class="o">=</span> <span class="n">set_platform</span><span class="p">()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">cl</span><span class="o">.</span><span class="n">Platform</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Setting the platform defaults to the first one (since there is often only one installed platform).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">our_device</span> <span class="o">=</span> <span class="n">set_device</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that the indexing of the array here is 1 based, as it's still in Julia. However the platform id above is indexed from 0 as it's a value which is directly passed to the C function.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">cl</span><span class="o">.</span><span class="n">devices</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">our_context</span> <span class="o">=</span> <span class="n">set_context</span><span class="p">(</span><span class="n">our_device</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We now have access to device 1, via our_context, and we have a handle for our_platform. These are all necessary components for running an OpenCL kernel.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">cl</span><span class="o">.</span><span class="n">CLError</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Many functions in OpenCL can return an error code. This has its own format but you can access it via CLError.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">cl</span><span class="o">.</span><span class="n">error_description</span><span class="p">(</span><span class="n">cl</span><span class="o">.</span><span class="n">CLError</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Normally the above line will work. But the version of the package that I was working with had a bug. I've submitted a pull request so it will hopefully work by the time of the workshop.</p>
+<p>In any case, the expected behaviour is to print out a useful string regarding the meaning of any returned error code.</p>
+<p>Note that OpenCL does not provide this functionality, this is a feature of the Julia OpenCL package.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="OpenCL-showcase-example">OpenCL showcase example<a class="anchor-link" href="#OpenCL-showcase-example">&#182;</a></h2><p><em>based on code written by Thomas McColgan and Rike Schuppner at a workshop in Lychen, 2017</em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">diff_kernel</span> <span class="o">=</span> <span class="s">&quot;</span>
+<span class="s">inline int xy_to_i(int x, int y, int col_size, int mesh_size) {</span>
+<span class="s">    return (x </span><span class="si">% c</span><span class="s">ol_size) + (y </span><span class="si">% c</span><span class="s">ol_size) * col_size; </span>
+<span class="s">}</span>
+
+<span class="s">__kernel void diff(__global const float *a,</span>
+<span class="s">__global float *diff,</span>
+<span class="s">int col_size,</span>
+<span class="s">int mesh_size)</span>
+<span class="s">    {</span>
+<span class="s">      int gid = get_global_id(0);</span>
+<span class="s">    int x_idx = gid </span><span class="si">% c</span><span class="s">ol_size;</span>
+<span class="s">    int y_idx = gid / col_size;</span>
+<span class="s">    </span>
+<span class="s">    diff[gid] = - 4. * a[gid]</span>
+<span class="s">    + a[xy_to_i(x_idx - 1, y_idx, col_size, mesh_size)]</span>
+<span class="s">    + a[xy_to_i(x_idx + 1, y_idx, col_size, mesh_size)]</span>
+<span class="s">    + a[xy_to_i(x_idx, y_idx - 1, col_size, mesh_size)]</span>
+<span class="s">    + a[xy_to_i(x_idx, y_idx + 1, col_size, mesh_size)];</span>
+<span class="s">    }</span>
+<span class="s">&quot;</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">sum_kernel</span> <span class="o">=</span> <span class="s">&quot;</span>
+<span class="s">   __kernel void sum(__global float *a,</span>
+<span class="s">__global const float *diff,</span>
+<span class="s">float step_size)</span>
+<span class="s">    {</span>
+<span class="s">      int gid = get_global_id(0);</span>
+<span class="s">    a[gid] += step_size * diff[gid];</span>
+<span class="s">    }</span>
+<span class="s">&quot;</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>OpenCL allows us to run <strong>kernels</strong> on the GPU/CPU device.</p>
+<p>In our example each parallel computational unit operates its own version of the <em>kernel</em> on a different unit in an array.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> initial_cond</span><span class="p">(</span><span class="n">big_array</span><span class="o">=</span><span class="n">true</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">big_array</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="kt">Float32</span><span class="p">,</span> <span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
+    <span class="k">else</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="kt">Float32</span><span class="p">,</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+    <span class="k">end</span>
+    <span class="n">a</span><span class="p">[</span><span class="kt">Int</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">a</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="kt">Int</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">a</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="k">return</span> <span class="n">a</span>
+<span class="k">end</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> do_openCL</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">device_index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c">#    device, ctx, queue = cl.create_compute_context()</span>
+<span class="c">#    print(device, ctx, queue)</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">set_device</span><span class="p">(</span><span class="n">device_index</span><span class="p">)</span>
+    <span class="c"># on my system device 1 is CPU, device 2 is GPU</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="n">set_context</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">queue</span>  <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">CmdQueue</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+
+    <span class="n">input_buff</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="kt">Float32</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="p">(:</span><span class="n">rw</span><span class="p">,</span> <span class="p">:</span><span class="n">copy</span><span class="p">),</span> <span class="n">hostbuf</span><span class="o">=</span><span class="n">input</span><span class="p">)</span>
+    <span class="n">diff_buff</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="kt">Float32</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="p">:</span><span class="n">rw</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">input</span><span class="p">))</span>
+
+    <span class="n">diff_p</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">diff_kernel</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">cl</span><span class="o">.</span><span class="n">build!</span>
+    <span class="n">diff_k</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Kernel</span><span class="p">(</span><span class="n">diff_p</span><span class="p">,</span> <span class="s">&quot;diff&quot;</span><span class="p">)</span>
+
+    <span class="n">sum_p</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">sum_kernel</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">cl</span><span class="o">.</span><span class="n">build!</span>
+    <span class="n">sum_k</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">Kernel</span><span class="p">(</span><span class="n">sum_p</span><span class="p">,</span> <span class="s">&quot;sum&quot;</span><span class="p">)</span>
+
+    <span class="n">step_size</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1000</span>
+        <span class="n">queue</span><span class="p">(</span><span class="n">diff_k</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">input</span><span class="p">),</span> <span class="n">nothing</span><span class="p">,</span> <span class="n">input_buff</span><span class="p">,</span> <span class="n">diff_buff</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">input</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">length</span><span class="p">(</span><span class="n">input</span><span class="p">))</span>
+        <span class="n">queue</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">input</span><span class="p">),</span> <span class="n">nothing</span><span class="p">,</span> <span class="n">input_buff</span><span class="p">,</span> <span class="n">diff_buff</span><span class="p">,</span> <span class="kt">Float32</span><span class="p">(</span><span class="n">step_size</span><span class="p">))</span>
+    <span class="k">end</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">input_buff</span><span class="p">);</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">input</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">r</span>
+<span class="k">end</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">do_openCL</span><span class="p">(</span><span class="n">initial_cond</span><span class="p">(</span><span class="n">true</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Running on the GPU is reasonably quick, considering the size of the system. My system typically takes 35secs.</p>
+<p>The big array system has a 5000x5000 array and we loop 1000 times across this, performing a number of summation and multiplication operations on every element.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">plot_result_cpu</span> <span class="o">=</span> <span class="n">do_openCL</span><span class="p">(</span><span class="n">initial_cond</span><span class="p">(</span><span class="n">false</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Running on the CPU is very slow. The big array takes &gt;5 mins on my laptop.</p>
+<p>So here I've set a flag to false to run an array which is 25 times smaller. It still takes 15 secs on the CPU.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">(</span><span class="mi">25</span><span class="o">*</span><span class="mi">15</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">plot_result_gpu</span> <span class="o">=</span> <span class="n">do_openCL</span><span class="p">(</span><span class="n">initial_cond</span><span class="p">(</span><span class="n">false</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can run that small system here on the GPU. We see a decent speed-up relative to CPU, on my system the time is now 2 secs, but on such a small system it is no longer dramatic.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> diff_step</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+    <span class="n">maxX</span><span class="p">,</span> <span class="n">maxY</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">iter</span> <span class="k">in</span> <span class="n">eachindex</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ind2sub</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">iter</span><span class="p">)</span>
+        <span class="n">output</span><span class="p">[</span><span class="n">iter</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="mf">4.</span> <span class="o">*</span> <span class="n">input</span><span class="p">[</span><span class="n">iter</span><span class="p">]</span> <span class="o">+</span> <span class="n">input</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">maxY</span> <span class="p">:</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">input</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="n">maxY</span> <span class="o">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
+        <span class="n">input</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">maxX</span> <span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">+</span>
+        <span class="n">input</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="n">maxX</span> <span class="o">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">output</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="nf"> sum_step</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">diff</span><span class="p">,</span> <span class="n">step_size</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">input</span> <span class="o">+</span> <span class="p">(</span><span class="n">step_size</span> <span class="o">*</span> <span class="n">diff</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="nf"> do_naive</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+    <span class="n">step_size</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">similar</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1000</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">diff_step</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">diff</span><span class="p">)</span>
+        <span class="n">input</span> <span class="o">=</span> <span class="n">sum_step</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">diff</span><span class="p">,</span> <span class="n">step_size</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">input</span>
+<span class="k">end</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can implement a <em>very</em> naive version here in non-optimised pure Julia, to see if there is much overhead using OpenCL.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">naive_result</span> <span class="o">=</span> <span class="n">do_naive</span><span class="p">(</span><span class="n">initial_cond</span><span class="p">(</span><span class="n">false</span><span class="p">));</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This comes in at 26 secs on my machine. Compared with 2 secs for OpenCL on GPU and 15 secs for OpenCL on CPU.</p>
+<p>Let's be clear, this is because we are operating in a regime which is particularly suitable for GPU computing here!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">initial_conditions_array</span> <span class="o">=</span> <span class="n">initial_cond</span><span class="p">(</span><span class="n">false</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">extrema</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">size</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">plot_result_cpu</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">extrema</span><span class="p">(</span><span class="n">plot_result_cpu</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">size</span><span class="p">(</span><span class="n">plot_result_cpu</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">initial_conditions_array</span><span class="p">[</span><span class="n">initial_conditions_array</span><span class="o">.&gt;</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">plot_result_cpu</span><span class="p">[</span><span class="n">plot_result_cpu</span><span class="o">.&gt;</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">PyCall</span>
+<span class="p">@</span><span class="n">pyimport</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">mplot</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">mplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">mplot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">initial_conditions_array</span><span class="p">[</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">mplot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">plot_result</span><span class="p">[</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span><span class="mi">480</span><span class="p">:</span><span class="mi">520</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We've focused our plot on the area where something is happening. For this particular process, for only 1000 time steps, we could have simulated a 40x40 area instead of 1000x1000.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">mplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Timing,-Benchmarking-&amp;-Profiling">Timing, Benchmarking &amp; Profiling<a class="anchor-link" href="#Timing,-Benchmarking-&amp;-Profiling">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Timing">Timing<a class="anchor-link" href="#Timing">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> do_my_loop</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">value</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">value</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="n">j</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">do_my_loop</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By now you've seen me using the @time macro</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> alternative_do_my_loop</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">value</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">value</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="n">j</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> final_alternative_do_my_loop</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">value</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">value</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">time</span> <span class="n">final_alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In most cases you need to be careful where and how you use @time. It is unreliable in the REPL due to the global namespace requiring ongoing type inference. Also, functions are compiled the first time that they are called so the first run should often be discarded.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Benchmarking">Benchmarking<a class="anchor-link" href="#Benchmarking">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;BenchmarkTools&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>BenchmarkTools is an incredibly sophisticated benchmarking package. We will use only the simplest features here but please check out the project if you have deeper needs</p>
+<p><a href="https://github.com/JuliaCI/BenchmarkTools.jl">https://github.com/JuliaCI/BenchmarkTools.jl</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">final_alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The simple @benchmark macro runs the function a number of times and analyses the processing requirements.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">max</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Profiling">Profiling<a class="anchor-link" href="#Profiling">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Profile</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">delay</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Profile</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We clear everything that's currently in the profiler to prepare for a run.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">profile</span> <span class="n">do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+<span class="p">@</span><span class="n">profile</span> <span class="n">alternative_do_my_loop</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We then run our code prepended by the @profile macro.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">ProfileView</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can view the Profiler output using the package ProfileView</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">ProfileView</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The bottom of the graph is the outermost code and the top is the innermost function calls.</p>
+<p>Ctrl+scroll to zoom vertically</p>
+<p>Ctrl+Shift+scroll to zoom horizontally</p>
+<p>Double-click to revert</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">Profile</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;profile.bin&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">serialize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">r</span><span class="p">)</span>
+<span class="n">close</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Often when profiling it's more useful to export the data for later analysis.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">ProfileView</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;profile.bin&quot;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">deserialize</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">ProfileView</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lidict</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can then import and plot it in a separate instance of Julia if we wish.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For tracking of memory allocations, load julia with the command-line flag</p>
+<blockquote><p>--track-allocations = user</p>
+</blockquote>
+<p>for malloc's from your own code, or</p>
+<blockquote><p>--track-allocations = all</p>
+</blockquote>
+<p>to include all Julia memory allocations during the run. You can access the .mem files in the host folder after julia has exited.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -11843,18 +13181,294 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Gallium is the package provided for debugging Julia. Unfortunately, due to some fundamental under the hood changes to Julia core, it is not yet functional for Julia 0.6 (released only 1 week ago).</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="k">using</span> <span class="n">Gallium</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Gallium</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> my_func_2</span><span class="p">(</span><span class="n">var</span><span class="p">::</span><span class="kt">Int</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;in my_func_2()&quot;</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot; the value of var is </span><span class="si">$var</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="nf"> my_func_1</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;in my_func_1()</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="nb">typeof</span><span class="p">(</span><span class="n">var</span><span class="p">)</span> <span class="o">==</span> <span class="kt">Int64</span>
+        <span class="n">my_func_2</span><span class="p">(</span><span class="n">var</span><span class="p">);</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We make some dummy functions that we might want to debug.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">my_func_1</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check that they seem to work.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">breakpoint</span><span class="p">(</span><span class="n">my_func_1</span><span class="p">,</span> <span class="p">(</span><span class="kt">Int64</span><span class="p">,))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, let's set a breakpoint on any call to my_func_1( ) which takes an Int64 as a parameter. Remember, the declaration of my_func_1( ) allows for any variable types to be passed to it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">my_small_int</span> <span class="o">=</span> <span class="kt">Int32</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="nb">typeof</span><span class="p">(</span><span class="n">my_small_int</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">my_bigger_int</span> <span class="o">=</span> <span class="kt">Int64</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="nb">typeof</span><span class="p">(</span><span class="n">my_bigger_int</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">my_func_1</span><span class="p">(</span><span class="n">my_small_int</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The call with 'my_small_int' did not match the breakpoint, so the function ran and exited as normal.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Gallium</span><span class="o">.</span><span class="n">list_breakpoints</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Gallium</span><span class="o">.</span><span class="n">breakpoint_on_error</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">my_func_1</span><span class="p">(</span><span class="n">my_bigger_int</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At this point we've reached the limit of what we can do in a Jupyter notebook. Debugging is not available here.</p>
+<p>So if you want to try a real debug session, open a REPL (or paste everthing into a file and run julia against the file) and paste the following code cell entry into it.</p>
+<p>The commands for the debugger are as follows:</p>
+<p>Basic Commands:</p>
+<ul>
+<li>n steps to the next line</li>
+<li>s steps into the next call</li>
+<li>finish runs to the end of the function</li>
+<li>bt shows a simple backtrace</li>
+<li>`stuff runs stuff in the current frame's context</li>
+<li>fr v will show all variables in the current frame</li>
+<li>f n where n is an integer, will go to the n-th frame.</li>
+</ul>
+<p>Advanced commands:</p>
+<ul>
+<li>nc steps to the next call</li>
+<li>ns steps to the next statement</li>
+<li>se does one expression step</li>
+<li>si does the same but steps into a call if a call is the next expression</li>
+<li>sg steps into a generated function</li>
+<li>shadow shows the internal representation of the expression tree (for debugger debugging only)</li>
+<li>loc shows the column data for the current top frame, in the same format as JuliaParsers's testshell.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Gallium</span>
+<span class="k">function</span><span class="nf"> my_func_2</span><span class="p">(</span><span class="n">var</span><span class="p">::</span><span class="kt">Int</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;in my_func_2()&quot;</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot; the value of var is </span><span class="si">$var</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="nf"> my_func_1</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;in my_func_1()</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="nb">typeof</span><span class="p">(</span><span class="n">var</span><span class="p">)</span> <span class="o">==</span> <span class="kt">Int64</span>
+        <span class="n">my_func_2</span><span class="p">(</span><span class="n">var</span><span class="p">);</span>
+    <span class="k">end</span>
+<span class="k">end</span><span class="p">;</span>
+
+<span class="n">breakpoint</span><span class="p">(</span><span class="n">my_func_1</span><span class="p">,</span> <span class="p">(</span><span class="kt">Int64</span><span class="p">,))</span>
+
+<span class="n">my_small_int</span> <span class="o">=</span> <span class="kt">Int32</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">my_bigger_int</span> <span class="o">=</span> <span class="kt">Int64</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">my_func_1</span><span class="p">(</span><span class="n">my_small_int</span><span class="p">)</span>
+<span class="n">my_func_1</span><span class="p">(</span><span class="n">my_bigger_int</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="FIN">FIN<a class="anchor-link" href="#FIN">&#182;</a></h1>
+</div>
+</div>
 </div>
     </div>
   </div>
